@@ -1,8 +1,8 @@
-import java.util.Arrays;
+import java.util.Map;
 import java.util.Scanner;
-import javax.swing.Timer;
 
-public class BJJ_MatchSim {
+
+public class nomatic_MatchTracker {
 
     public static void scoreTracker() {
 
@@ -16,6 +16,11 @@ public class BJJ_MatchSim {
     public static void matchSetUp(boolean matchStart) {
 
     }
+
+    public Map<String, Integer> competitorDatabase(Map<String, Integer> competitorList) {
+        return null;
+    }
+
     
 
     public static void main(String[] args) {
@@ -215,6 +220,10 @@ public class BJJ_MatchSim {
 //            }
 
         // create match report with score and winner.
+
+        // enter match result into results database - <result, method> ex: Win via Points
+
+        // enter competitor result into competitor database
 
         }
 
