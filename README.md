@@ -1,2 +1,4 @@
-# BJJ-Match-CommandLine
-Creating a CLI program to practice my Java skillset. This program simulates a Brazilian Jiujitsu match between two opponents via Command Line. 
+# noMATic
+Creating a BJJ user program to practice and hone my Java skill set.
+This program aims to include several features in development such as:
+Live match setup & scoring, competition / open mat locator.
