@@ -204,13 +204,25 @@ public class nomatic_MatchTracker {
         System.out.println(competitorOne + " VS " + competitorTwo);
 
 
+        // import scoreTracker object into Match Tracker
+        nomatic_ScoreTracker scoreTracker = new nomatic_ScoreTracker();
 
+        // calls method within nomatic_ScoreTracker class
+        int competitorOneScore = scoreTracker.pointsCalculator(competitorOne);
+        int competitorTwoScore = scoreTracker.pointsCalculator(competitorTwo);
+
+        System.out.println(competitorOneScore);
+        System.out.println(competitorTwoScore);
 
         // create boolean and while state to run code if match still going
-//        boolean matchFinished = false;
-//        while (!matchFinished) {
-//
-//            }
+        boolean matchFinished = false;
+        while (!matchFinished) {
+
+        }
+
+
+
+
 
         // create match report with score and winner.
 
