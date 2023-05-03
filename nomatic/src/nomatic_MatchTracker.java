@@ -7,22 +7,12 @@ import java.util.Scanner;
 
 public class nomatic_MatchTracker {
 
-    public static void scoreTracker() {
-
-    }
-    public static void timeTracker(int matchLength) {
-        // test timer function
-        // test robot function
-//        Timer timeInput = new Timer();
-    }
-
-    public static void matchSetUp(boolean matchStart) {
-
-    }
 
     public Map<String, Integer> competitorDatabase(Map<String, Integer> competitorList) {
         return null;
     }
+    // have own OBJECT for competitor database? what information am i looking to gather? each individual column can be
+    // represented
 
     
 
