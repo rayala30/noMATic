@@ -7,21 +7,17 @@ import java.util.Scanner;
 
 public class nomatic_MatchTracker {
 
-
     public Map<String, Integer> competitorDatabase(Map<String, Integer> competitorList) {
         return null;
     }
     // have own OBJECT for competitor database? what information am i looking to gather? each individual column can be
     // represented
 
-    
-
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
         // create global error messages
         String errorMessage = "Invalid input. Please try again.";
-
 
         // FIRST COMPETITOR
         String competitorOne = "";
@@ -202,14 +198,21 @@ public class nomatic_MatchTracker {
         System.out.println("Match set for the " + genderDivision + " " + ageDivision + " " + beltDivision + " division at " + weightDivision + ".");
         System.out.println("");
         System.out.println(competitorOne + " VS " + competitorTwo);
-
+        System.out.println("");
+        System.out.println("Match START.");
+        System.out.println("");
 
         // import scoreTracker object into Match Tracker
         nomatic_ScoreTracker scoreTracker = new nomatic_ScoreTracker();
 
         // calls method within nomatic_ScoreTracker class
         int competitorOneScore = scoreTracker.pointsCalculator(competitorOne);
+        int competitorOneAdv = scoreTracker.advantageCalculator(competitorOne);
+        int competitorOnePen = scoreTracker.penaltyCalculator(competitorOne);
+
         int competitorTwoScore = scoreTracker.pointsCalculator(competitorTwo);
+        int competitorTwoAdv = scoreTracker.advantageCalculator(competitorTwo);
+        int competitorTwoPen = scoreTracker.penaltyCalculator(competitorTwo);
 
         System.out.println(competitorOneScore);
         System.out.println(competitorTwoScore);
@@ -219,6 +222,8 @@ public class nomatic_MatchTracker {
         while (!matchFinished) {
 
         }
+
+
 
 
 
