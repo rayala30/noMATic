@@ -21,172 +21,186 @@ public class nomatic_MatchTracker {
 
         // FIRST COMPETITOR
         String competitorOne = "";
-        boolean firstNameEntry = false;
-
-        while (!firstNameEntry) {
+        boolean missingFirstNameEntry = true;
+        // while missingFirstNameEntry is TRUE, run below code
+        while (missingFirstNameEntry) {
             // enter first athlete name
             System.out.print("Please enter name of Athlete One (First Last): ");
             String athleteOneName = input.nextLine();
 
-            if (!athleteOneName.isEmpty()) {
-                competitorOne = athleteOneName;
-                firstNameEntry = true;
+            if (athleteOneName.isEmpty()) {
+                System.out.println(errorMessage);
+                missingFirstNameEntry = true;
             }
             else {
-                System.out.println(errorMessage);
-                firstNameEntry = false;
+                competitorOne = athleteOneName;
+                missingFirstNameEntry = false;
             }
         }
 
         // SECOND COMPETITOR
         String competitorTwo = "";
-        boolean secondNameEntry = false;
+        boolean missingSecondNameEntry = true;
 
-        while (!secondNameEntry) {
+        while (missingSecondNameEntry) {
             // enter second athlete name
             System.out.print("Please enter name of Athlete Two (First Last): ");
             String athleteTwoName = input.nextLine();
 
-            if (!athleteTwoName.isEmpty()) {
-                competitorTwo = athleteTwoName;
-                secondNameEntry = true;
+            if (athleteTwoName.isEmpty()) {
+                System.out.println(errorMessage);
+                missingSecondNameEntry = true;
             }
             else {
-                System.out.println(errorMessage);
-                secondNameEntry = false;
+                competitorTwo = athleteTwoName;
+                missingSecondNameEntry = false;
             }
         }
 
         System.out.println("");
 
-        // enter belt division
-        System.out.println("Please select belt division");
-        System.out.println("(1) White | (2) Blue | (3) Purple | (4) Brown | (5) Black");
 
         String beltDivision = "";
-        boolean beltEntry = false;
+        boolean missingBeltEntry = true;
 
-        while (!beltEntry) {
+        while (missingBeltEntry) {
+            // enter belt division
+            System.out.println("Please select belt division");
+            System.out.println("(1) White | (2) Blue | (3) Purple | (4) Brown | (5) Black");
             String beltInput = input.nextLine();
 
             if (beltInput.equals("1")) {
                 beltDivision = "White Belt";
-                beltEntry = true;
+                missingBeltEntry = false;
             } else if (beltInput.equals("2")) {
                 beltDivision = "Blue Belt";
-                beltEntry = true;
+                missingBeltEntry = false;
             } else if (beltInput.equals("3")) {
                 beltDivision = "Purple Belt";
-                beltEntry = true;
+                missingBeltEntry = false;
             } else if (beltInput.equals("4")) {
                 beltDivision = "Brown Belt";
-                beltEntry = true;
+                missingBeltEntry = false;
             } else if (beltInput.equals("5")) {
                 beltDivision = "Black Belt";
-                beltEntry = true;
+                missingBeltEntry = false;
+            } else if (beltInput.isEmpty()) {
+                System.out.println(errorMessage);
+                missingBeltEntry = true;
+            }
+            else {
+                System.out.println(errorMessage);
+                missingBeltEntry = true;
+            }
+        }
+
+        System.out.println("");
+
+        String genderDivision = "";
+        boolean missingGenderEntry = true;
+
+        while (missingGenderEntry) {
+            // enter gender division
+            System.out.println("Please select gender division");
+            System.out.print("(1) Male | (2) Female: ");
+            String genderInput = input.nextLine();
+
+            if (genderInput.equals("1")) {
+                genderDivision = "Male";
+                missingGenderEntry = false;
+            } else if (genderInput.equals("2")) {
+                genderDivision = "Female";
+                missingGenderEntry = false;
+            } else if (genderInput.isEmpty()) {
+                System.out.println(errorMessage);
+                missingGenderEntry = true;
+            }
+            else {
+                System.out.println(errorMessage);
+                missingGenderEntry = true;
+            }
+        }
+
+        System.out.println("");
+
+        String ageDivision = "";
+        boolean missingAgeEntry = true;
+        while (missingAgeEntry) {
+            // enter age division
+            System.out.println("Please select age division");
+            System.out.print("(1) Juvenile | (2) Adult | (3) Masters: ");
+            String ageInput = input.nextLine();
+
+            if (ageInput.equals("1")) {
+                ageDivision = "Juvenile";
+                missingAgeEntry = false;
+            } else if (ageInput.equals("2")) {
+                ageDivision = "Adult";
+                missingAgeEntry = false;
+            } else if (ageInput.equals("3")) {
+                ageDivision = "Masters";
+                missingAgeEntry = false;
+            } else if (ageInput.isEmpty()) {
+                System.out.println(errorMessage);
+                System.out.println("");
+                missingAgeEntry = true;
+            }
+            else {
+                System.out.println(errorMessage);
+                System.out.println("");
+                missingAgeEntry = true;
+            }
+        }
+
+        System.out.println("");
+
+        String weightDivision = "";
+
+        boolean missingWeightEntry = true;
+        while (missingWeightEntry) {
+            // enter weight division
+            System.out.println("Please select weight division");
+            System.out.println("(1) Roosterweight | (2) Light Featherweight | (3) Featherweight");
+            System.out.println("(4) Lightweight | (5) Middleweight | (6) Medium Heavyweight");
+            System.out.println("(7) Heavyweight | (8) Super Heavyweight | (9) Ultra Heavyweight");
+            String weightInput = input.nextLine();
+
+            if (weightInput.equals("1")) {
+                weightDivision = "Roosterweight";
+                missingWeightEntry = false;
+            } else if (weightInput.equals("2")) {
+                weightDivision = "Light-Featherweight";
+                missingWeightEntry = false;
+            } else if (weightInput.equals("3")) {
+                weightDivision = "Featherweight";
+                missingWeightEntry = false;
+            } else if (weightInput.equals("4")) {
+                weightDivision = "Lightweight";
+                missingWeightEntry = false;
+            } else if (weightInput.equals("5")) {
+                weightDivision = "Middleweight";
+                missingWeightEntry = false;
+            } else if (weightInput.equals("6")) {
+                weightDivision = "Medium Heavyweight";
+                missingWeightEntry = false;
+            } else if (weightInput.equals("7")) {
+                weightDivision = "Heavyweight";
+                missingWeightEntry = false;
+            } else if (weightInput.equals("8")) {
+                weightDivision = "Super Heavyweight";
+                missingWeightEntry = false;
+            } else if (weightInput.equals("9")) {
+                weightDivision = "Ultra Heavyweight";
+                missingWeightEntry = false;
+            } else if (weightInput.isEmpty()){
+                System.out.println(errorMessage);
+//                System.out.println("");
+                missingWeightEntry = true;
             }
             else {
                 System.out.println(errorMessage);
 //                System.out.println("");
-                beltEntry = false;
-            }
-        }
-
-        System.out.println("");
-
-        // enter gender division
-        System.out.println("Please select gender division");
-        System.out.print("(1) Male | (2) Female: ");
-
-// while statement translates to "while userEntry is true", run this
-        String genderDivision = "";
-        boolean genderEntry = false;
-        while (!genderEntry) {
-            String genderInput = input.next();
-
-            if (genderInput.equals("1")) {
-                genderDivision = "Male";
-                genderEntry = true;
-            } else if (genderInput.equals("2")) {
-                genderDivision = "Female";
-                genderEntry = true;
-            } else {
-                System.out.println(errorMessage);
-//                System.out.println("");
-                genderEntry = false;
-            }
-        }
-
-        System.out.println("");
-        // enter age division
-        System.out.println("Please select age division");
-        System.out.print("(1) Juvenile | (2) Adult | (3) Masters: ");
-
-        String ageDivision = "";
-        boolean ageEntry = false;
-        while (!ageEntry) {
-
-            String ageInput = input.next();
-
-            if (ageInput.equals("1")) {
-                ageDivision = "Juvenile";
-                ageEntry = true;
-            } else if (ageInput.equals("2")) {
-                ageDivision = "Adult";
-                ageEntry = true;
-            } else if (ageInput.equals("3")) {
-                ageDivision = "Masters";
-                ageEntry = true;
-            } else {
-                System.out.println(errorMessage);
-                System.out.println("");
-                ageEntry = false;
-            }
-        }
-
-        System.out.println("");
-        // enter weight division
-        System.out.println("Please select weight division");
-        System.out.println("(1) Roosterweight | (2) Light Featherweight | (3) Featherweight");
-        System.out.println("(4) Lightweight | (5) Middleweight | (6) Medium Heavyweight");
-        System.out.println("(7) Heavyweight | (8) Super Heavyweight | (9) Ultra Heavyweight");
-
-        String weightDivision = "";
-        boolean weightEntry = false;
-        while (!weightEntry) {
-            String weightInput = input.next();
-
-            if (weightInput.equals("1")) {
-                weightDivision = "Roosterweight";
-                weightEntry = true;
-            } else if (weightInput.equals("2")) {
-                weightDivision = "Light-Featherweight";
-                weightEntry = true;
-            } else if (weightInput.equals("3")) {
-                weightDivision = "Featherweight";
-                weightEntry = true;
-            } else if (weightInput.equals("4")) {
-                weightDivision = "Lightweight";
-                weightEntry = true;
-            } else if (weightInput.equals("5")) {
-                weightDivision = "Middleweight";
-                weightEntry = true;
-            } else if (weightInput.equals("6")) {
-                weightDivision = "Medium Heavyweight";
-                weightEntry = true;
-            } else if (weightInput.equals("7")) {
-                weightDivision = "Heavyweight";
-                weightEntry = true;
-            } else if (weightInput.equals("8")) {
-                weightDivision = "Super Heavyweight";
-                weightEntry = true;
-            } else if (weightInput.equals("9")) {
-                weightDivision = "Ultra Heavyweight";
-                weightEntry = true;
-            } else {
-                System.out.println(errorMessage);
-//                System.out.println("");
-                weightEntry = false;
+                missingWeightEntry = true;
             }
         }
 
@@ -205,22 +219,26 @@ public class nomatic_MatchTracker {
         // import scoreTracker object into Match Tracker
         nomatic_ScoreTracker scoreTracker = new nomatic_ScoreTracker();
 
-        // calls method within nomatic_ScoreTracker class
-        int competitorOneScore = scoreTracker.pointsCalculator(competitorOne);
-        int competitorOneAdv = scoreTracker.advantageCalculator(competitorOne);
-        int competitorOnePen = scoreTracker.penaltyCalculator(competitorOne);
-
-        int competitorTwoScore = scoreTracker.pointsCalculator(competitorTwo);
-        int competitorTwoAdv = scoreTracker.advantageCalculator(competitorTwo);
-        int competitorTwoPen = scoreTracker.penaltyCalculator(competitorTwo);
-
-        System.out.println(competitorOneScore);
-        System.out.println(competitorTwoScore);
-
         // create boolean and while state to run code if match still going
-        boolean matchFinished = false;
-        while (!matchFinished) {
+        boolean matchOngoing = true;
+        // match will be ongoing until time runs out
+        // create a timer class that is set to true when counting down starts
+        // while match is ongoing, run the code below
+        while (matchOngoing) {
+            // create input line where points can be awarded based on user input
 
+
+            // calls method within nomatic_ScoreTracker class
+            int competitorOneScore = scoreTracker.pointsCalculator(competitorOne);
+            int competitorOneAdv = scoreTracker.advantageCalculator(competitorOne);
+            int competitorOnePen = scoreTracker.penaltyCalculator(competitorOne);
+
+            int competitorTwoScore = scoreTracker.pointsCalculator(competitorTwo);
+            int competitorTwoAdv = scoreTracker.advantageCalculator(competitorTwo);
+            int competitorTwoPen = scoreTracker.penaltyCalculator(competitorTwo);
+
+            System.out.println(competitorOneScore);
+            System.out.println(competitorTwoScore);
         }
 
 

@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
-import java.util.Timer;
+import javax.swing.Timer;
 
 
 public class nomatic_TimeTracker {
@@ -16,6 +16,11 @@ public class nomatic_TimeTracker {
     // can make separate class
 
     // Robot
+
+
+    public void Timer() {
+
+    }
 
     public static void main(String[] args) {
 
