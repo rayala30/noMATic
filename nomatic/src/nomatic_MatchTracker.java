@@ -19,6 +19,10 @@ public class nomatic_MatchTracker {
         // create global error messages
         String errorMessage = "Invalid input. Please try again.";
 
+        // NOMATIC MATCHMAKER WELCOME MESSAGE
+        System.out.println("Welcome to the no-MAT-ic Mat(ch)Maker!");
+        System.out.println("");
+
         // FIRST COMPETITOR
         String competitorOne = "";
         boolean missingFirstNameEntry = true;
@@ -206,13 +210,63 @@ public class nomatic_MatchTracker {
 
         System.out.println("");
 
+        String timeEntry = "";
+        int matchLength = 0; //milliseconds
+
+        boolean missingTimeEntry = true;
+
+        while(missingTimeEntry) {
+            // select match time limit in minutes. enter time variable as milliseconds
+            System.out.println("Select match length:");
+            System.out.println("(A) 5:00 | (B) 6:00 | (C) 7:00 | (D) 8:00 | (E) 10:00");
+            String timeInput = input.nextLine();
+
+            if (timeInput.isEmpty()) {
+                missingTimeEntry = true;
+                System.out.println(errorMessage);
+            }
+            else if (timeInput.equals("A") || timeInput.equals("a")) {
+                timeEntry = "5:00";
+                matchLength = 300000;
+                missingTimeEntry = false;
+            }
+            else if (timeInput.equals("B") || timeInput.equals("b")) {
+                timeEntry = "6:00";
+                matchLength = 360000;
+                missingTimeEntry = false;
+            }
+            else if (timeInput.equals("C") || timeInput.equals("c")) {
+                timeEntry = "7:00";
+                matchLength = 420000;
+                missingTimeEntry = false;
+            }
+            else if (timeInput.equals("D") || timeInput.equals("d")) {
+                timeEntry = "8:00";
+                matchLength = 480000;
+                missingTimeEntry = false;
+            }
+            else if (timeInput.equals("E") || timeInput.equals("e")) {
+                timeEntry = "10:00";
+                matchLength = 600000;
+                missingTimeEntry = false;
+            }
+            else {
+                System.out.println(errorMessage);
+                missingTimeEntry = true;
+            }
+        }
+
+        System.out.println("");
+
         // match set with names, gender, age, and weight
         System.out.println("Thank you. Now setting up match.");
         System.out.println("");
-        System.out.println("Match set for the " + genderDivision + " " + ageDivision + " " + beltDivision + " division at " + weightDivision + ".");
+        System.out.println("Match set for the " + genderDivision + " " + ageDivision + " " + beltDivision + " division at " + weightDivision
+                + " for " + timeEntry + ".");
         System.out.println("");
         System.out.println(competitorOne + " VS " + competitorTwo);
         System.out.println("");
+
         System.out.println("Match START.");
         System.out.println("");
 
@@ -228,21 +282,15 @@ public class nomatic_MatchTracker {
             // create input line where points can be awarded based on user input
 
 
+
             // calls method within nomatic_ScoreTracker class
-            int competitorOneScore = scoreTracker.pointsCalculator(competitorOne);
-            int competitorOneAdv = scoreTracker.advantageCalculator(competitorOne);
-            int competitorOnePen = scoreTracker.penaltyCalculator(competitorOne);
+            scoreTracker.pointsCalculator();
+//
+//            int competitorTwoScore = scoreTracker.pointsCalculator(competitorTwo);
 
-            int competitorTwoScore = scoreTracker.pointsCalculator(competitorTwo);
-            int competitorTwoAdv = scoreTracker.advantageCalculator(competitorTwo);
-            int competitorTwoPen = scoreTracker.penaltyCalculator(competitorTwo);
-
-            System.out.println(competitorOneScore);
-            System.out.println(competitorTwoScore);
+//            System.out.println(competitorOneScore);
+//            System.out.println(competitorTwoScore);
         }
-
-
-
 
 
 
