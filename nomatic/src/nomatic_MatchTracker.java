@@ -371,6 +371,57 @@ public class nomatic_MatchTracker {
                 }
             }
 
+            // if REVIEW is selected action
+            if (action.equals("R") || action.equals("r")) {
+                System.out.println("Edit score for: ");
+                System.out.println("(1) " + competitorOne + " OR " + "(2) " + competitorTwo);
+                String athleteSelection = input.nextLine();
+
+                if (athleteSelection.equals("1")) {
+                    String selection = "";
+                    promptForReview(selection);
+                    selection = input.nextLine();
+
+                    if (selection.equals("1")) {
+                        System.out.println("Enter point deduction: ");
+                        String pointDeduction = input.nextLine();
+                        competitorOnePoints -= Integer.parseInt(pointDeduction);
+                    }
+                    if (selection.equals("2")) {
+                        System.out.println("Enter advantage deduction: ");
+                        String advDeduction = input.nextLine();
+                        competitorOneAdv -= Integer.parseInt(advDeduction);
+                    }
+                    if (selection.equals("3")) {
+                        System.out.println("Enter penalty deduction: ");
+                        String penDeduction = input.nextLine();
+                        competitorOnePenalty -= Integer.parseInt(penDeduction);
+                    }
+                }
+
+                if (athleteSelection.equals("2")) {
+                    String selection = "";
+                    promptForReview(selection);
+                    selection = input.nextLine();
+
+                    if (selection.equals("1")) {
+                        System.out.println("Enter point deduction: ");
+                        String pointDeduction = input.nextLine();
+                        competitorTwoPoints -= Integer.parseInt(pointDeduction);
+                    }
+                    if (selection.equals("2")) {
+                        System.out.println("Enter advantage deduction: ");
+                        String advDeduction = input.nextLine();
+                        competitorTwoAdv -= Integer.parseInt(advDeduction);
+                    }
+                    if (selection.equals("3")) {
+                        System.out.println("Enter penalty deduction: ");
+                        String penDeduction = input.nextLine();
+                        competitorTwoPenalty -= Integer.parseInt(penDeduction);
+                    }
+                }
+            }
+
             System.out.println(competitorOne);
             System.out.println("  Points: " + competitorOnePoints);
             System.out.println("  Advantages: " + competitorOneAdv);
@@ -397,7 +448,12 @@ public class nomatic_MatchTracker {
         // this menu will remain constant for the duration of match
         System.out.println("Choose action: ");
         System.out.println("(1) Points | (2) Advantage | (3) Penalty");
-        System.out.println("(S)ubmission | (D)isqualification");
+        System.out.println("(S)ubmission | (D)isqualification | (R)eview");
+    }
+
+    private static void promptForReview(String selection) {
+        System.out.println("Choose category to review: ");
+        System.out.println("(1) Points | (2) Advantage | (3) Penalty");
     }
 
     // create points calculator method
@@ -457,28 +513,6 @@ public class nomatic_MatchTracker {
         }
         // this is returning one instance of the points everytime function is called.
        return points;
-    }
-
-
-
-
-    public static int penaltyCalculator() {
-        // create global error messages
-        String errorMessage = "Invalid input. Please try again.";
-
-        Scanner input = new Scanner(System.in);
-        // System.out.println(pointTypes);
-        // allow for point deduction correction
-        String actionInput = input.nextLine();
-
-        System.out.println();
-        int penalty = 0;
-
-        if (actionInput.equals("2")) {
-            penalty ++;
-            System.out.println("+1 Penalty.");
-        }
-        return penalty;
     }
 
 
