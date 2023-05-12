@@ -1,6 +1,4 @@
 import java.util.Map;
-import java.util.Arrays;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -253,11 +251,27 @@ public class nomatic_MatchTracker {
         // match will be ongoing until time runs out
         // create a timer class that is set to true when counting down starts
 
+        // initialize competitor score
+        int competitorOnePoints = 0;
+        int competitorOnePenalty = 0;
+        int competitorOneAdv = 0;
+
+        int competitorTwoPoints = 0;
+        int competitorTwoPenalty = 0;
+        int competitorTwoAdv = 0;
 
         // while match is ongoing, run the code below
         while (matchOngoing) {
             // call action menu that displays throughout the match duration
-            promptForAction("");
+            String action = "";
+            promptForAction(action);
+            action = input.nextLine();
+
+            if (action.equals("1")) {
+                String pointSelection = "";
+                int points = pointsCalculator(pointSelection);
+                pointSelection = input.next();
+                }
 
 
             }
@@ -269,13 +283,10 @@ public class nomatic_MatchTracker {
 
 
     private static void promptForAction(String action) {
+        // this menu will remain constant for the duration of match
         System.out.println("Choose action: ");
         System.out.println("(1) Points | (2) Penalty | (3) Advantage");
         System.out.println("(S)ubmission | (D)isqualification");
-
-        String actionInput = input.nextLine();
-        action = actionInput;
-
     }
 
     // create points calculator method
@@ -292,14 +303,14 @@ public class nomatic_MatchTracker {
         pointTypes.put("guard pass", 3);
         pointTypes.put("mount", 4);
         pointTypes.put("back control", 4);
-        pointTypes.put("advantage", 1);
-        pointTypes.put("penalty", 1);
 
         System.out.println();
 
         System.out.println("Select point type: ");
         System.out.println("(S)weep | (T)akedown | (K)nee on Belly");
         System.out.println("(G)uard Pass | (M)ount | (B)ack Control");
+
+        pointSelection = input.nextLine();
 
         int points = 0;
 
@@ -333,6 +344,7 @@ public class nomatic_MatchTracker {
         else {
             System.out.println(errorMessage);
         }
+        // this is returning one instance of the points everytime function is called.
        return points;
     }
 
