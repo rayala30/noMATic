@@ -6,22 +6,16 @@ import java.util.Scanner;
 
 
 public class nomatic_MatchTracker {
-
-    public Map<String, Integer> competitorDatabase(Map<String, Integer> competitorList) {
-        return null;
-    }
-    // have own OBJECT for competitor database? what information am i looking to gather? each individual column can be
-    // represented
-
+    static Scanner input = new Scanner(System.in);
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+
 
         // create global error messages
         String errorMessage = "Invalid input. Please try again.";
 
         // NOMATIC MATCHMAKER WELCOME MESSAGE
         System.out.println("Welcome to the no-MAT-ic Mat(ch)Maker!");
-        System.out.println("");
+        System.out.println();
 
         // FIRST COMPETITOR
         String competitorOne = "";
@@ -34,7 +28,6 @@ public class nomatic_MatchTracker {
 
             if (athleteOneName.isEmpty()) {
                 System.out.println(errorMessage);
-                missingFirstNameEntry = true;
             }
             else {
                 competitorOne = athleteOneName;
@@ -53,7 +46,6 @@ public class nomatic_MatchTracker {
 
             if (athleteTwoName.isEmpty()) {
                 System.out.println(errorMessage);
-                missingSecondNameEntry = true;
             }
             else {
                 competitorTwo = athleteTwoName;
@@ -61,8 +53,7 @@ public class nomatic_MatchTracker {
             }
         }
 
-        System.out.println("");
-
+        System.out.println();
 
         String beltDivision = "";
         boolean missingBeltEntry = true;
@@ -90,15 +81,13 @@ public class nomatic_MatchTracker {
                 missingBeltEntry = false;
             } else if (beltInput.isEmpty()) {
                 System.out.println(errorMessage);
-                missingBeltEntry = true;
             }
             else {
                 System.out.println(errorMessage);
-                missingBeltEntry = true;
             }
         }
 
-        System.out.println("");
+        System.out.println();
 
         String genderDivision = "";
         boolean missingGenderEntry = true;
@@ -117,15 +106,13 @@ public class nomatic_MatchTracker {
                 missingGenderEntry = false;
             } else if (genderInput.isEmpty()) {
                 System.out.println(errorMessage);
-                missingGenderEntry = true;
             }
             else {
                 System.out.println(errorMessage);
-                missingGenderEntry = true;
             }
         }
 
-        System.out.println("");
+        System.out.println();
 
         String ageDivision = "";
         boolean missingAgeEntry = true;
@@ -146,17 +133,15 @@ public class nomatic_MatchTracker {
                 missingAgeEntry = false;
             } else if (ageInput.isEmpty()) {
                 System.out.println(errorMessage);
-                System.out.println("");
-                missingAgeEntry = true;
+                System.out.println();
             }
             else {
                 System.out.println(errorMessage);
-                System.out.println("");
-                missingAgeEntry = true;
+                System.out.println();
             }
         }
 
-        System.out.println("");
+        System.out.println();
 
         String weightDivision = "";
 
@@ -198,23 +183,18 @@ public class nomatic_MatchTracker {
                 missingWeightEntry = false;
             } else if (weightInput.isEmpty()){
                 System.out.println(errorMessage);
-//                System.out.println("");
-                missingWeightEntry = true;
             }
             else {
                 System.out.println(errorMessage);
-//                System.out.println("");
-                missingWeightEntry = true;
             }
         }
 
-        System.out.println("");
+        System.out.println();
 
         String timeEntry = "";
         int matchLength = 0; //milliseconds
 
         boolean missingTimeEntry = true;
-
         while(missingTimeEntry) {
             // select match time limit in minutes. enter time variable as milliseconds
             System.out.println("Select match length:");
@@ -222,7 +202,6 @@ public class nomatic_MatchTracker {
             String timeInput = input.nextLine();
 
             if (timeInput.isEmpty()) {
-                missingTimeEntry = true;
                 System.out.println(errorMessage);
             }
             else if (timeInput.equals("A") || timeInput.equals("a")) {
@@ -252,56 +231,181 @@ public class nomatic_MatchTracker {
             }
             else {
                 System.out.println(errorMessage);
-                missingTimeEntry = true;
             }
         }
 
-        System.out.println("");
+        System.out.println();
 
         // match set with names, gender, age, and weight
         System.out.println("Thank you. Now setting up match.");
-        System.out.println("");
+        System.out.println();
         System.out.println("Match set for the " + genderDivision + " " + ageDivision + " " + beltDivision + " division at " + weightDivision
                 + " for " + timeEntry + ".");
-        System.out.println("");
+        System.out.println();
         System.out.println(competitorOne + " VS " + competitorTwo);
-        System.out.println("");
+        System.out.println();
 
         System.out.println("Match START.");
-        System.out.println("");
-
-        // import scoreTracker object into Match Tracker
-        nomatic_ScoreTracker scoreTracker = new nomatic_ScoreTracker();
+        System.out.println();
 
         // create boolean and while state to run code if match still going
         boolean matchOngoing = true;
         // match will be ongoing until time runs out
         // create a timer class that is set to true when counting down starts
+
+
         // while match is ongoing, run the code below
         while (matchOngoing) {
-            // create input line where points can be awarded based on user input
+            // call action menu that displays throughout the match duration
+            promptForAction("");
 
 
+            }
 
-            // calls method within nomatic_ScoreTracker class
-            scoreTracker.pointsCalculator();
-//
-//            int competitorTwoScore = scoreTracker.pointsCalculator(competitorTwo);
-
-//            System.out.println(competitorOneScore);
-//            System.out.println(competitorTwoScore);
         }
 
 
 
 
+
+    private static void promptForAction(String action) {
+        System.out.println("Choose action: ");
+        System.out.println("(1) Points | (2) Penalty | (3) Advantage");
+        System.out.println("(S)ubmission | (D)isqualification");
+
+        String actionInput = input.nextLine();
+        action = actionInput;
+
+    }
+
+    // create points calculator method
+    private static int pointsCalculator(String pointSelection) {
+        // create global error messages
+        String errorMessage = "Invalid input. Please try again.";
+
+        // create pointType map. pointTypes can be in an unordered data structure
+        Map<String, Integer> pointTypes = new HashMap<>();
+        // add values
+        pointTypes.put("sweep", 2);
+        pointTypes.put("takedown", 2);
+        pointTypes.put("knee on belly", 2);
+        pointTypes.put("guard pass", 3);
+        pointTypes.put("mount", 4);
+        pointTypes.put("back control", 4);
+        pointTypes.put("advantage", 1);
+        pointTypes.put("penalty", 1);
+
+        System.out.println();
+
+        System.out.println("Select point type: ");
+        System.out.println("(S)weep | (T)akedown | (K)nee on Belly");
+        System.out.println("(G)uard Pass | (M)ount | (B)ack Control");
+
+        int points = 0;
+
+        if (pointSelection.equals("s") || pointSelection.equals("S")) {
+            points += pointTypes.get("sweep");
+            System.out.println("2 points for Sweep.");
+        }
+        else if (pointSelection.equals("t") || pointSelection.equals("T")) {
+            points += pointTypes.get("takedown");
+            System.out.println("2 points for Takedown.");
+        }
+        else if (pointSelection.equals("k") || pointSelection.equals("K")) {
+            points += pointTypes.get("knee on belly");
+            System.out.println("2 points for Knee on Belly.");
+        }
+        else if (pointSelection.equals("g") || pointSelection.equals("G")) {
+            points += pointTypes.get("guard pass");
+            System.out.println("3 points for Guard Pass.");
+        }
+        else if (pointSelection.equals("m") || pointSelection.equals("M")) {
+            points += pointTypes.get("mount");
+            System.out.println("4 points for Mount.");
+        }
+        else if (pointSelection.equals("b") || pointSelection.equals("B")) {
+            points += pointTypes.get("back control");
+            System.out.println("4 points for Back Control.");
+        }
+        else if (pointSelection.isEmpty()) {
+            System.out.println(errorMessage);
+        }
+        else {
+            System.out.println(errorMessage);
+        }
+       return points;
+    }
+
+    public static int penaltyCalculator() {
+        // create global error messages
+        String errorMessage = "Invalid input. Please try again.";
+
+        Scanner input = new Scanner(System.in);
+        // System.out.println(pointTypes);
+        // allow for point deduction correction
+        String actionInput = input.nextLine();
+
+        System.out.println();
+        int penalty = 0;
+
+        if (actionInput.equals("2")) {
+            penalty ++;
+            System.out.println("+1 Penalty.");
+        }
+        return penalty;
+    }
+
+
+    public static int advantageCalculator() {
+        // create global error messages
+        String errorMessage = "Invalid input. Please try again.";
+
+        Scanner input = new Scanner(System.in);
+        // System.out.println(pointTypes);
+        // allow for point deduction correction
+        String actionInput = input.nextLine();
+
+        System.out.println();
+        int advantage = 0;
+
+        if (actionInput.equals("3")) {
+            advantage ++;
+            System.out.println("+1 Advantage.");
+        }
+        return advantage;
+    }
+
+
+
+    public static void promptForSubmission() {
+        System.out.println("Win by submission.");
+    }
+
+    public static void promptForDisqualification() {
+        System.out.println("Loss by disqualification.");
+    }
+
+
+    private static void Timer() {
+
+    }
+
+
+    private static void matchResults() {
         // create match report with score and winner.
 
         // enter match result into results database - <result, method> ex: Win via Points
 
         // enter competitor result into competitor database
+    }
 
-        }
+
+
+
 
 
 }
+
+
+
+
