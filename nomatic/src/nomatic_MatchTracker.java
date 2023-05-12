@@ -2,13 +2,13 @@ import java.sql.SQLOutput;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.EventListener;
+import javax.swing.Timer;
 
 
 public class nomatic_MatchTracker {
     static Scanner input = new Scanner(System.in);
     public static void main(String[] args) {
-
-
         // create global error messages
         String errorMessage = "Invalid input. Please try again.";
 
@@ -439,7 +439,7 @@ public class nomatic_MatchTracker {
 
 
         /*
-        FUNCTIONS & METHODS BELOW
+        HELPER FUNCTIONS & METHODS BELOW
          */
 
 
