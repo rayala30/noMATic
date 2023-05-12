@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -267,25 +268,135 @@ public class nomatic_MatchTracker {
             promptForAction(action);
             action = input.nextLine();
 
+            // if POINTS is selected action
             if (action.equals("1")) {
+                System.out.println("Award points to: ");
+                System.out.println("(1) " + competitorOne + " OR " + "(2) " + competitorTwo);
+                String athleteSelection = input.nextLine();
+
                 String pointSelection = "";
                 int points = pointsCalculator(pointSelection);
-                pointSelection = input.next();
+                pointSelection = input.nextLine();
+
+                    if (athleteSelection.equals("1")) {
+                    competitorOnePoints += points;
+                    }
+                    else if (athleteSelection.equals("2")) {
+                    competitorTwoPoints += points;
+                    }
+                    else {
+                    System.out.println(errorMessage);
+                    }
                 }
 
+            // if ADVANTAGE is selected action
+            if (action.equals("2")) {
+                System.out.println("Award advantage to: ");
+                System.out.println("(1) " + competitorOne + " OR " + "(2) " + competitorTwo);
+                String athleteSelection = input.nextLine();
 
+                if (athleteSelection.equals("1")) {
+                    competitorOneAdv ++;
+                }
+                else if (athleteSelection.equals("2")) {
+                    competitorTwoAdv ++;
+                }
+                else {
+                    System.out.println(errorMessage);
+                }
+            }
+
+            // if PENALTY is selected action
+            if (action.equals("3")) {
+                System.out.println("Give penalty to: ");
+                System.out.println("(1) " + competitorOne + " OR " + "(2) " + competitorTwo);
+                String athleteSelection = input.nextLine();
+
+                if (athleteSelection.equals("1")) {
+                    competitorOnePenalty ++;
+                }
+                else if (athleteSelection.equals("2")) {
+                    competitorTwoPenalty ++;
+                }
+                else {
+                    System.out.println(errorMessage);
+                }
+            }
+
+            // if SUBMISSION is selected action
+            if (action.equals("S") || action.equals("s")) {
+                System.out.println("Submission win by: ");
+                System.out.println("(1) " + competitorOne + " OR " + "(2) " + competitorTwo);
+                String athleteSelection = input.nextLine();
+
+                if (athleteSelection.equals("1")) {
+                    System.out.println(competitorOne.toUpperCase() + " wins!");
+                    System.out.println("Match over.");
+                    System.out.println();
+                    matchOngoing = false;
+                }
+                else if (athleteSelection.equals("2")) {
+                    System.out.println(competitorTwo.toUpperCase() + " wins!");
+                    System.out.println("Match over.");
+                    System.out.println();
+                    matchOngoing = false;
+                }
+                else {
+                    System.out.println(errorMessage);
+                }
+            }
+
+            // if DISQUALIFICATION is selected action
+            if (action.equals("D") || action.equals("d")) {
+                System.out.println("Disqualification for: ");
+                System.out.println("(1) " + competitorOne + " OR " + "(2) " + competitorTwo);
+                String athleteSelection = input.nextLine();
+
+                if (athleteSelection.equals("1")) {
+                    System.out.println(competitorOne + " has been disqualified!");
+                    System.out.println(competitorTwo.toUpperCase() + " wins!");
+                    System.out.println("Match over.");
+                    System.out.println();
+                    matchOngoing = false;
+                }
+                else if (athleteSelection.equals("2")) {
+                    System.out.println(competitorTwo + " has been disqualified!");
+                    System.out.println(competitorOne.toUpperCase() + " wins!");
+                    System.out.println("Match over.");
+                    System.out.println();
+                    matchOngoing = false;
+                }
+                else {
+                    System.out.println(errorMessage);
+                }
+            }
+
+            System.out.println(competitorOne);
+            System.out.println("  Points: " + competitorOnePoints);
+            System.out.println("  Advantages: " + competitorOneAdv);
+            System.out.println("  Penalties: " + competitorOnePenalty);
+            System.out.println();
+            System.out.println(competitorTwo);
+            System.out.println("  Points: " + competitorTwoPoints);
+            System.out.println("  Advantages: " + competitorTwoAdv);
+            System.out.println("  Penalties: " + competitorTwoPenalty);
+            System.out.println();
             }
 
         }
 
 
 
+        /*
+        FUNCTIONS & METHODS BELOW
+         */
+
 
 
     private static void promptForAction(String action) {
         // this menu will remain constant for the duration of match
         System.out.println("Choose action: ");
-        System.out.println("(1) Points | (2) Penalty | (3) Advantage");
+        System.out.println("(1) Points | (2) Advantage | (3) Penalty");
         System.out.println("(S)ubmission | (D)isqualification");
     }
 
@@ -348,6 +459,9 @@ public class nomatic_MatchTracker {
        return points;
     }
 
+
+
+
     public static int penaltyCalculator() {
         // create global error messages
         String errorMessage = "Invalid input. Please try again.";
@@ -365,36 +479,6 @@ public class nomatic_MatchTracker {
             System.out.println("+1 Penalty.");
         }
         return penalty;
-    }
-
-
-    public static int advantageCalculator() {
-        // create global error messages
-        String errorMessage = "Invalid input. Please try again.";
-
-        Scanner input = new Scanner(System.in);
-        // System.out.println(pointTypes);
-        // allow for point deduction correction
-        String actionInput = input.nextLine();
-
-        System.out.println();
-        int advantage = 0;
-
-        if (actionInput.equals("3")) {
-            advantage ++;
-            System.out.println("+1 Advantage.");
-        }
-        return advantage;
-    }
-
-
-
-    public static void promptForSubmission() {
-        System.out.println("Win by submission.");
-    }
-
-    public static void promptForDisqualification() {
-        System.out.println("Loss by disqualification.");
     }
 
 
