@@ -1,12 +1,9 @@
-import java.sql.SQLOutput;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Scanner;
-import java.util.EventListener;
-import javax.swing.Timer;
 
 
-public class nomatic_MatchTracker {
+public class MatchTracker {
     static Scanner input = new Scanner(System.in);
     public static void main(String[] args) {
         // create global error messages
