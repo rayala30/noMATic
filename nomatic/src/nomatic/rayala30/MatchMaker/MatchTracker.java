@@ -1,3 +1,5 @@
+package nomatic.rayala30.MatchMaker;
+
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Scanner;

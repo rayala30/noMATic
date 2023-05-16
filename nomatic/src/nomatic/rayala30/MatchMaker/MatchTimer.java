@@ -1,3 +1,5 @@
+package nomatic.rayala30.MatchMaker;
+
 import javax.swing.Timer;
 import java.util.EventListener;
 import java.awt.event.ActionListener;
@@ -35,4 +37,9 @@ public class MatchTimer {
 //        timer = new Timer();
 
     }
+
+
+    // methods
+
+    // create a run, start, stop method for timer
 }
