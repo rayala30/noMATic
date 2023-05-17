@@ -1,11 +1,9 @@
-package nomatic.rayala30.MatchMaker;
+package nomatic.rayala30.MatchMaker.model;
 
 import javax.swing.Timer;
-import java.util.EventListener;
-import java.awt.event.ActionListener;
 
 
-public class MatchTimer {
+public class CountdownTimer {
     // instance variables
     private int minutes;
     private int seconds;
