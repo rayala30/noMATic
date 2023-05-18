@@ -1,11 +1,11 @@
-package nomatic.rayala30.MatchMaker.model;
+package nomatic.rayala30.MatchMaker.model.archive;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 
-public class LiveMatch {
+public class LiveMatch_Preliminary {
     static Scanner input = new Scanner(System.in);
     public static void main(String[] args) {
         // create global error messages
