@@ -32,7 +32,7 @@ public class CountdownTimer {
 
     // constructors
     public void setTimer(int minutes) {
-//        timer = new Timer();
+
 
     }
 

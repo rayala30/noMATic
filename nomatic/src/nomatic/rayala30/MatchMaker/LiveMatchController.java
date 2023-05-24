@@ -3,6 +3,9 @@ package nomatic.rayala30.MatchMaker;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Scanner;
+
+import nomatic.rayala30.MatchMaker.model.athlete.Belt;
+import nomatic.rayala30.MatchMaker.model.athlete.Weight;
 import nomatic.rayala30.util.BasicConsole;
 
 
@@ -54,7 +57,8 @@ public class LiveMatchController {
 
         System.out.println();
 
-        String beltDivision = "";
+//        String beltDivision = "";
+        Belt beltDivision = Belt.WHITE; // default value
         boolean missingBeltEntry = true;
 
         while (missingBeltEntry) {
@@ -64,19 +68,19 @@ public class LiveMatchController {
             String beltInput = input.nextLine();
 
             if (beltInput.equals("1")) {
-                beltDivision = "White Belt";
+                beltDivision = Belt.WHITE;
                 missingBeltEntry = false;
             } else if (beltInput.equals("2")) {
-                beltDivision = "Blue Belt";
+                beltDivision = Belt.BLUE;
                 missingBeltEntry = false;
             } else if (beltInput.equals("3")) {
-                beltDivision = "Purple Belt";
+                beltDivision = Belt.PURPLE;
                 missingBeltEntry = false;
             } else if (beltInput.equals("4")) {
-                beltDivision = "Brown Belt";
+                beltDivision = Belt.BROWN;
                 missingBeltEntry = false;
             } else if (beltInput.equals("5")) {
-                beltDivision = "Black Belt";
+                beltDivision = Belt.BLACK;
                 missingBeltEntry = false;
             } else if (beltInput.isEmpty()) {
                 System.out.println(errorMessage);
@@ -142,43 +146,46 @@ public class LiveMatchController {
 
         System.out.println();
 
-        String weightDivision = "";
-
+//        String weightDivision = "";
+        Weight weightDivision = Weight.ROOSTERWEIGHT;
         boolean missingWeightEntry = true;
         while (missingWeightEntry) {
             // enter weight division
             System.out.println("Please select weight division");
             System.out.println("(1) Roosterweight | (2) Light Featherweight | (3) Featherweight");
             System.out.println("(4) Lightweight | (5) Middleweight | (6) Medium Heavyweight");
-            System.out.println("(7) Heavyweight | (8) Super Heavyweight | (9) Ultra Heavyweight");
+            System.out.println("(7) Heavyweight | (8) Super Heavyweight | (9) Ultra Heavyweight | (10) Open Weight");
             String weightInput = input.nextLine();
 
             if (weightInput.equals("1")) {
-                weightDivision = "Roosterweight";
+                weightDivision = Weight.ROOSTERWEIGHT;
                 missingWeightEntry = false;
             } else if (weightInput.equals("2")) {
-                weightDivision = "Light-Featherweight";
+                weightDivision = Weight.LIGHT_FEATHERWEIGHT;
                 missingWeightEntry = false;
             } else if (weightInput.equals("3")) {
-                weightDivision = "Featherweight";
+                weightDivision = Weight.FEATHERWEIGHT;
                 missingWeightEntry = false;
             } else if (weightInput.equals("4")) {
-                weightDivision = "Lightweight";
+                weightDivision = Weight.LIGHTWEIGHT;
                 missingWeightEntry = false;
             } else if (weightInput.equals("5")) {
-                weightDivision = "Middleweight";
+                weightDivision = Weight.MIDDLEWEIGHT;
                 missingWeightEntry = false;
             } else if (weightInput.equals("6")) {
-                weightDivision = "Medium Heavyweight";
+                weightDivision = Weight.MEDIUM_HEAVYWEIGHT;
                 missingWeightEntry = false;
             } else if (weightInput.equals("7")) {
-                weightDivision = "Heavyweight";
+                weightDivision = Weight.HEAVYWEIGHT;
                 missingWeightEntry = false;
             } else if (weightInput.equals("8")) {
-                weightDivision = "Super Heavyweight";
+                weightDivision = Weight.SUPER_HEAVYWEIGHT;
                 missingWeightEntry = false;
             } else if (weightInput.equals("9")) {
-                weightDivision = "Ultra Heavyweight";
+                weightDivision = Weight.ULTRA_HEAVYWEIGHT;
+                missingWeightEntry = false;
+            } else if (weightInput.equals("10")) {
+                weightDivision = Weight.OPEN_WEIGHT;
                 missingWeightEntry = false;
             } else if (weightInput.isEmpty()){
                 System.out.println(errorMessage);

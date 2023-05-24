@@ -1,35 +1,41 @@
 package nomatic.rayala30.MatchMaker.model.athlete;
 
-public class Athlete {
+public class Athlete extends Biographic {
+
+
     // instance variables
-    private String name;
-    private int age;
-    private String gender;
+
+    // every BJJ Athlete "has a" belt and "has a" weight
+    private Belt belt;
+    private Weight weight;
 
 
-    // constructor
-    public Athlete(String name, int age, String gender) {
-        this.name = name;
-        this.age = age;
-        this.gender = gender;
+    // constructors
+    public Athlete(String name, int age, String gender, Belt belt, Weight weight) {
+        super(name, age, gender);
+        this.belt = belt;
+        this.weight = weight;
     }
-
 
     // getters
-    public String getName() {
-        return this.name;
+
+
+    public Belt getBelt() {
+        return belt;
     }
 
-    public int getAge() {
-        return this.age;
+    public Weight getWeight() {
+        return weight;
     }
 
-    public String getGender() {
-        return this.gender;
+    // method
+    @Override
+    public String toString() {
+        return "Athlete {" +
+                "belt=" + belt +
+                ", name='" + getName() + '\'' +
+                ", age=" + getAge() +
+                ", gender='" + getGender() + '\'' +
+                '}';
     }
-
-    // setters
-
-
-
 }
