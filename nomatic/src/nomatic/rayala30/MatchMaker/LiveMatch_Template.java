@@ -6,11 +6,15 @@ import java.util.Scanner;
 
 import nomatic.rayala30.MatchMaker.model.athlete.Belt;
 import nomatic.rayala30.MatchMaker.model.athlete.Weight;
-import nomatic.rayala30.util.BasicConsole;
 
+/*
+LiveMatchController is a class that the application creates a single instance of to orchestrate all of its operations
+through a series of menus. It relies on other classes for the details of interacting with the user and file system.
+ */
 
-public class LiveMatchController {
+public class LiveMatch_Template {
     static Scanner input = new Scanner(System.in);
+
     public static void main(String[] args) {
         // create global error messages
         String errorMessage = "Invalid input. Please try again.";
@@ -19,51 +23,14 @@ public class LiveMatchController {
         System.out.println("Welcome to the no-MAT-ic Mat(ch)Maker!");
         System.out.println();
 
-        // FIRST COMPETITOR
-        String competitorOne = "";
-        boolean missingFirstNameEntry = true;
-        // while missingFirstNameEntry is TRUE, run below code
-        while (missingFirstNameEntry) {
-            // enter first athlete name
-            System.out.print("Please enter name of Athlete One (First Last): ");
-            String athleteOneName = input.nextLine();
 
-            if (athleteOneName.isEmpty()) {
-                System.out.println(errorMessage);
-            }
-            else {
-                competitorOne = athleteOneName;
-                missingFirstNameEntry = false;
-            }
-        }
-
-        // SECOND COMPETITOR
-        String competitorTwo = "";
-        boolean missingSecondNameEntry = true;
-
-        while (missingSecondNameEntry) {
-            // enter second athlete name
-            System.out.print("Please enter name of Athlete Two (First Last): ");
-            String athleteTwoName = input.nextLine();
-
-            if (athleteTwoName.isEmpty()) {
-                System.out.println(errorMessage);
-            }
-            else {
-                competitorTwo = athleteTwoName;
-                missingSecondNameEntry = false;
-            }
-        }
-
-        System.out.println();
-
-//        String beltDivision = "";
+        //        String beltDivision = "";
         Belt beltDivision = Belt.WHITE; // default value
         boolean missingBeltEntry = true;
 
         while (missingBeltEntry) {
             // enter belt division
-            System.out.println("Please select belt division");
+            System.out.println("Please select match belt division");
             System.out.println("(1) White | (2) Blue | (3) Purple | (4) Brown | (5) Black");
             String beltInput = input.nextLine();
 
@@ -196,6 +163,52 @@ public class LiveMatchController {
         }
 
         System.out.println();
+
+
+
+        // FIRST COMPETITOR
+        String competitorOne = "";
+        boolean missingFirstNameEntry = true;
+        // while missingFirstNameEntry is TRUE, run below code
+        while (missingFirstNameEntry) {
+            // enter first athlete name
+            System.out.print("Please enter name of Athlete One (First Last): ");
+            String athleteOneName = input.nextLine();
+
+            if (athleteOneName.isEmpty()) {
+                System.out.println(errorMessage);
+            }
+            else {
+                competitorOne = athleteOneName;
+                missingFirstNameEntry = false;
+            }
+        }
+
+        // SECOND COMPETITOR
+        String competitorTwo = "";
+        boolean missingSecondNameEntry = true;
+
+        while (missingSecondNameEntry) {
+            // enter second athlete name
+            System.out.print("Please enter name of Athlete Two (First Last): ");
+            String athleteTwoName = input.nextLine();
+
+            if (athleteTwoName.isEmpty()) {
+                System.out.println(errorMessage);
+            }
+            else {
+                competitorTwo = athleteTwoName;
+                missingSecondNameEntry = false;
+            }
+        }
+
+        System.out.println();
+
+        // Create Athlete objects here
+
+
+
+
 
         String timeEntry = "";
         int matchLength = 0; //milliseconds

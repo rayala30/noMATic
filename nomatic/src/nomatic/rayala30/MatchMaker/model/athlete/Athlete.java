@@ -4,7 +4,6 @@ public class Athlete extends Biographic {
 
 
     // instance variables
-
     // every BJJ Athlete "has a" belt and "has a" weight
     private Belt belt;
     private Weight weight;

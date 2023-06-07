@@ -1,7 +1,7 @@
 package nomatic.rayala30.MatchMaker.model.athlete;
 
 public enum Weight {
-
+    // create weight classes
     ROOSTERWEIGHT, LIGHT_FEATHERWEIGHT, FEATHERWEIGHT, LIGHTWEIGHT, MIDDLEWEIGHT, MEDIUM_HEAVYWEIGHT, HEAVYWEIGHT,
     SUPER_HEAVYWEIGHT, ULTRA_HEAVYWEIGHT, OPEN_WEIGHT
 
