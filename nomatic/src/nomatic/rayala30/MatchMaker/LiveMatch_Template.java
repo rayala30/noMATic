@@ -16,13 +16,15 @@ public class LiveMatch_Template {
     static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-        // create global error messages
+        // create global error messages for error handling
         String errorMessage = "Invalid input. Please try again.";
 
         // NOMATIC MATCHMAKER WELCOME MESSAGE
         System.out.println("Welcome to the no-MAT-ic Mat(ch)Maker!");
         System.out.println();
 
+
+        // Implement try-catch blocks
 
         //        String beltDivision = "";
         Belt beltDivision = Belt.WHITE; // default value
@@ -34,27 +36,27 @@ public class LiveMatch_Template {
             System.out.println("(1) White | (2) Blue | (3) Purple | (4) Brown | (5) Black");
             String beltInput = input.nextLine();
 
-            if (beltInput.equals("1")) {
-                beltDivision = Belt.WHITE;
-                missingBeltEntry = false;
-            } else if (beltInput.equals("2")) {
-                beltDivision = Belt.BLUE;
-                missingBeltEntry = false;
-            } else if (beltInput.equals("3")) {
-                beltDivision = Belt.PURPLE;
-                missingBeltEntry = false;
-            } else if (beltInput.equals("4")) {
-                beltDivision = Belt.BROWN;
-                missingBeltEntry = false;
-            } else if (beltInput.equals("5")) {
-                beltDivision = Belt.BLACK;
-                missingBeltEntry = false;
-            } else if (beltInput.isEmpty()) {
+            try {
+                if (beltInput.equals("1")) {
+                    beltDivision = Belt.WHITE;
+                    missingBeltEntry = false;
+                } else if (beltInput.equals("2")) {
+                    beltDivision = Belt.BLUE;
+                    missingBeltEntry = false;
+                } else if (beltInput.equals("3")) {
+                    beltDivision = Belt.PURPLE;
+                    missingBeltEntry = false;
+                } else if (beltInput.equals("4")) {
+                    beltDivision = Belt.BROWN;
+                    missingBeltEntry = false;
+                } else if (beltInput.equals("5")) {
+                    beltDivision = Belt.BLACK;
+                    missingBeltEntry = false;
+                }
+            } catch (IllegalArgumentException e) {
                 System.out.println(errorMessage);
             }
-            else {
-                System.out.println(errorMessage);
-            }
+
         }
 
         System.out.println();
@@ -68,16 +70,15 @@ public class LiveMatch_Template {
             System.out.print("(1) Male | (2) Female: ");
             String genderInput = input.nextLine();
 
-            if (genderInput.equals("1")) {
-                genderDivision = "Male";
-                missingGenderEntry = false;
-            } else if (genderInput.equals("2")) {
-                genderDivision = "Female";
-                missingGenderEntry = false;
-            } else if (genderInput.isEmpty()) {
-                System.out.println(errorMessage);
-            }
-            else {
+            try {
+                if (genderInput.equals("1")) {
+                    genderDivision = "Male";
+                    missingGenderEntry = false;
+                } else if (genderInput.equals("2")) {
+                    genderDivision = "Female";
+                    missingGenderEntry = false;
+                }
+            } catch (IllegalArgumentException e) {
                 System.out.println(errorMessage);
             }
         }
@@ -92,22 +93,19 @@ public class LiveMatch_Template {
             System.out.print("(1) Juvenile | (2) Adult | (3) Masters: ");
             String ageInput = input.nextLine();
 
-            if (ageInput.equals("1")) {
-                ageDivision = "Juvenile";
-                missingAgeEntry = false;
-            } else if (ageInput.equals("2")) {
-                ageDivision = "Adult";
-                missingAgeEntry = false;
-            } else if (ageInput.equals("3")) {
-                ageDivision = "Masters";
-                missingAgeEntry = false;
-            } else if (ageInput.isEmpty()) {
+            try {
+                if (ageInput.equals("1")) {
+                    ageDivision = "Juvenile";
+                    missingAgeEntry = false;
+                } else if (ageInput.equals("2")) {
+                    ageDivision = "Adult";
+                    missingAgeEntry = false;
+                } else if (ageInput.equals("3")) {
+                    ageDivision = "Masters";
+                    missingAgeEntry = false;
+                }
+            } catch (IllegalArgumentException e) {
                 System.out.println(errorMessage);
-                System.out.println();
-            }
-            else {
-                System.out.println(errorMessage);
-                System.out.println();
             }
         }
 
@@ -124,40 +122,39 @@ public class LiveMatch_Template {
             System.out.println("(7) Heavyweight | (8) Super Heavyweight | (9) Ultra Heavyweight | (10) Open Weight");
             String weightInput = input.nextLine();
 
-            if (weightInput.equals("1")) {
-                weightDivision = Weight.ROOSTERWEIGHT;
-                missingWeightEntry = false;
-            } else if (weightInput.equals("2")) {
-                weightDivision = Weight.LIGHT_FEATHERWEIGHT;
-                missingWeightEntry = false;
-            } else if (weightInput.equals("3")) {
-                weightDivision = Weight.FEATHERWEIGHT;
-                missingWeightEntry = false;
-            } else if (weightInput.equals("4")) {
-                weightDivision = Weight.LIGHTWEIGHT;
-                missingWeightEntry = false;
-            } else if (weightInput.equals("5")) {
-                weightDivision = Weight.MIDDLEWEIGHT;
-                missingWeightEntry = false;
-            } else if (weightInput.equals("6")) {
-                weightDivision = Weight.MEDIUM_HEAVYWEIGHT;
-                missingWeightEntry = false;
-            } else if (weightInput.equals("7")) {
-                weightDivision = Weight.HEAVYWEIGHT;
-                missingWeightEntry = false;
-            } else if (weightInput.equals("8")) {
-                weightDivision = Weight.SUPER_HEAVYWEIGHT;
-                missingWeightEntry = false;
-            } else if (weightInput.equals("9")) {
-                weightDivision = Weight.ULTRA_HEAVYWEIGHT;
-                missingWeightEntry = false;
-            } else if (weightInput.equals("10")) {
-                weightDivision = Weight.OPEN_WEIGHT;
-                missingWeightEntry = false;
-            } else if (weightInput.isEmpty()){
-                System.out.println(errorMessage);
-            }
-            else {
+            try {
+                if (weightInput.equals("1")) {
+                    weightDivision = Weight.ROOSTERWEIGHT;
+                    missingWeightEntry = false;
+                } else if (weightInput.equals("2")) {
+                    weightDivision = Weight.LIGHT_FEATHERWEIGHT;
+                    missingWeightEntry = false;
+                } else if (weightInput.equals("3")) {
+                    weightDivision = Weight.FEATHERWEIGHT;
+                    missingWeightEntry = false;
+                } else if (weightInput.equals("4")) {
+                    weightDivision = Weight.LIGHTWEIGHT;
+                    missingWeightEntry = false;
+                } else if (weightInput.equals("5")) {
+                    weightDivision = Weight.MIDDLEWEIGHT;
+                    missingWeightEntry = false;
+                } else if (weightInput.equals("6")) {
+                    weightDivision = Weight.MEDIUM_HEAVYWEIGHT;
+                    missingWeightEntry = false;
+                } else if (weightInput.equals("7")) {
+                    weightDivision = Weight.HEAVYWEIGHT;
+                    missingWeightEntry = false;
+                } else if (weightInput.equals("8")) {
+                    weightDivision = Weight.SUPER_HEAVYWEIGHT;
+                    missingWeightEntry = false;
+                } else if (weightInput.equals("9")) {
+                    weightDivision = Weight.ULTRA_HEAVYWEIGHT;
+                    missingWeightEntry = false;
+                } else if (weightInput.equals("10")) {
+                    weightDivision = Weight.OPEN_WEIGHT;
+                    missingWeightEntry = false;
+                }
+            } catch (IllegalArgumentException e) {
                 System.out.println(errorMessage);
             }
         }
@@ -175,12 +172,16 @@ public class LiveMatch_Template {
             System.out.print("Please enter name of Athlete One (First Last): ");
             String athleteOneName = input.nextLine();
 
-            if (athleteOneName.isEmpty()) {
+            try {
+                if (athleteOneName.isEmpty()) {
+                    missingFirstNameEntry = true;
+                }
+                else {
+                    competitorOne = athleteOneName;
+                    missingFirstNameEntry = false;
+                }
+            } catch (IllegalArgumentException e) {
                 System.out.println(errorMessage);
-            }
-            else {
-                competitorOne = athleteOneName;
-                missingFirstNameEntry = false;
             }
         }
 
@@ -193,20 +194,23 @@ public class LiveMatch_Template {
             System.out.print("Please enter name of Athlete Two (First Last): ");
             String athleteTwoName = input.nextLine();
 
-            if (athleteTwoName.isEmpty()) {
+            try {
+                if (athleteTwoName.isEmpty()) {
+                    missingSecondNameEntry = true;
+                }
+                else {
+                    competitorTwo = athleteTwoName;
+                    missingSecondNameEntry = false;
+                }
+            } catch (IllegalArgumentException e) {
                 System.out.println(errorMessage);
-            }
-            else {
-                competitorTwo = athleteTwoName;
-                missingSecondNameEntry = false;
             }
         }
 
         System.out.println();
 
+        // TODO
         // Create Athlete objects here
-
-
 
 
 
@@ -220,35 +224,33 @@ public class LiveMatch_Template {
             System.out.println("(A) 5:00 | (B) 6:00 | (C) 7:00 | (D) 8:00 | (E) 10:00");
             String timeInput = input.nextLine();
 
-            if (timeInput.isEmpty()) {
-                System.out.println(errorMessage);
-            }
-            else if (timeInput.equals("A") || timeInput.equals("a")) {
-                timeEntry = "5:00";
-                matchLength = 300000;
-                missingTimeEntry = false;
-            }
-            else if (timeInput.equals("B") || timeInput.equals("b")) {
-                timeEntry = "6:00";
-                matchLength = 360000;
-                missingTimeEntry = false;
-            }
-            else if (timeInput.equals("C") || timeInput.equals("c")) {
-                timeEntry = "7:00";
-                matchLength = 420000;
-                missingTimeEntry = false;
-            }
-            else if (timeInput.equals("D") || timeInput.equals("d")) {
-                timeEntry = "8:00";
-                matchLength = 480000;
-                missingTimeEntry = false;
-            }
-            else if (timeInput.equals("E") || timeInput.equals("e")) {
-                timeEntry = "10:00";
-                matchLength = 600000;
-                missingTimeEntry = false;
-            }
-            else {
+            try {
+                if (timeInput.equalsIgnoreCase("A")) {
+                    timeEntry = "5:00";
+                    matchLength = 300000;
+                    missingTimeEntry = false;
+                }
+                else if (timeInput.equalsIgnoreCase("B")) {
+                    timeEntry = "6:00";
+                    matchLength = 360000;
+                    missingTimeEntry = false;
+                }
+                else if (timeInput.equalsIgnoreCase("C")) {
+                    timeEntry = "7:00";
+                    matchLength = 420000;
+                    missingTimeEntry = false;
+                }
+                else if (timeInput.equalsIgnoreCase("D")) {
+                    timeEntry = "8:00";
+                    matchLength = 480000;
+                    missingTimeEntry = false;
+                }
+                else if (timeInput.equalsIgnoreCase("E")) {
+                    timeEntry = "10:00";
+                    matchLength = 600000;
+                    missingTimeEntry = false;
+                }
+            } catch (IllegalArgumentException e) {
                 System.out.println(errorMessage);
             }
         }
@@ -456,6 +458,8 @@ public class LiveMatch_Template {
 
         }
 
+
+        // Use File I/O to generate results log
 
 
         /*
