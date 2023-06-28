@@ -1,6 +1,9 @@
 package nomatic.rayala30.MatchMaker;
 
 import nomatic.rayala30.MatchMaker.model.Match;
+import nomatic.rayala30.MatchMaker.model.athlete.Athlete;
+import nomatic.rayala30.MatchMaker.model.athlete.Belt;
+import nomatic.rayala30.MatchMaker.model.athlete.Weight;
 import nomatic.rayala30.util.BasicConsole;
 import nomatic.rayala30.util.BasicFileStorage;
 
@@ -17,8 +20,6 @@ public class MatchMakerController {
         view = new MatchMakerView(console);
     }
 
-
-
     // Methods
 
     public void run() {
@@ -26,11 +27,38 @@ public class MatchMakerController {
     }
 
 
-    private void createNewMatch() {
-        currentMatch = new Match();
+    private void createNewMatch(Athlete athleteOne, Athlete athleteTwo, Belt belt, Weight weight, String age, String gender, int time) {
+        currentMatch = new Match(athleteOne, athleteTwo, belt, weight, age, gender, time);
+
+        // TODO
+        // Add a match number
     }
 
     private void displayStartingMenu() {
+        final String WELCOME_MESSAGE = "Welcome to the no-MAT-ic Mat(ch)Maker";
+
+        final String NEW = "Create a new match";
+        final String LOAD = "View previous match results";
+        final String EXIT = "Exit the program";     // use System.exit(0) for EXIT option?
+        final String[] MENU_OPTIONS = {NEW, LOAD, EXIT};
+
+        boolean finished = false;
+
+        while(!finished) {
+            String selection = view.getMenuSelection(WELCOME_MESSAGE, MENU_OPTIONS);
+
+            if (selection.equals(NEW)) {
+                displayMatchMenu();
+            } else if (selection.equals(LOAD)) {
+                loadMatchResults();
+                if (currentMatch != null) {
+                    displayMatchMenu();
+                }
+            }
+            else {
+                finished = true;
+            }
+        }
 
     }
 
@@ -43,6 +71,7 @@ public class MatchMakerController {
     }
 
     private void displayWeightMenu() {
+        // use view.getMenuSelection
 
     }
 
@@ -59,6 +88,10 @@ public class MatchMakerController {
     }
 
     private void displayTimeMenu() {
+
+    }
+
+    private void loadMatchResults() {
 
     }
 

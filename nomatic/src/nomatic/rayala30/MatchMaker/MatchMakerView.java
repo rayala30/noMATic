@@ -22,8 +22,16 @@ public class MatchMakerView {
         return console.promptForString("Please enter the file name: ");
     }
 
+    public void printMessage(String message) {
+        console.printMessage(message);
+    }
+
     public void printErrorMessage(String message) {
         console.printErrorMessage(message);
+    }
+
+    public void printDivider() {
+        console.printDivider();
     }
 
     public String getMenuSelection(String menuTitle, String[] options) {

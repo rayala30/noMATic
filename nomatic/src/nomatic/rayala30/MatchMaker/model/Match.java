@@ -1,14 +1,18 @@
 package nomatic.rayala30.MatchMaker.model;
 
 import nomatic.rayala30.MatchMaker.model.athlete.Athlete;
+import nomatic.rayala30.MatchMaker.model.athlete.Belt;
+import nomatic.rayala30.MatchMaker.model.athlete.Weight;
 
 public class Match {
 
     // Instance variables
     private Athlete athleteOne;
     private Athlete athleteTwo;
+
+    private Belt matchBelt;
     private int matchLength;
-    private String matchWeight;
+    private Weight matchWeight;
     private String matchAge;
     private String matchGender;
 
@@ -19,15 +23,15 @@ public class Match {
 
     }
 
-    public Match(Athlete athleteOne, Athlete athleteTwo, int matchLength, String matchWeight, String matchAge, String matchGender) {
+    public Match(Athlete athleteOne, Athlete athleteTwo, Belt matchBelt, Weight matchWeight, String matchAge, String matchGender, int matchLength) {
         this.athleteOne = athleteOne;
         this.athleteTwo = athleteTwo;
+        this.matchBelt = matchBelt;
         this.matchLength = matchLength;
         this.matchWeight = matchWeight;
         this.matchAge = matchAge;
         this.matchGender = matchGender;
     }
-
 
     // Getters
 
@@ -43,7 +47,7 @@ public class Match {
         return matchLength;
     }
 
-    public String getMatchWeight() {
+    public Weight getMatchWeight() {
         return matchWeight;
     }
 
@@ -62,7 +66,7 @@ public class Match {
         this.matchLength = matchLength;
     }
 
-    public void setMatchWeight(String matchWeight) {
+    public void setMatchWeight(Weight matchWeight) {
         this.matchWeight = matchWeight;
     }
 
