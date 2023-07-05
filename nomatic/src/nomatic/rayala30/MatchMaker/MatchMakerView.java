@@ -1,5 +1,7 @@
 package nomatic.rayala30.MatchMaker;
 
+import nomatic.rayala30.MatchMaker.model.athlete.Belt;
+import nomatic.rayala30.MatchMaker.model.athlete.Weight;
 import nomatic.rayala30.util.BasicConsole;
 
 /*
@@ -19,7 +21,7 @@ public class MatchMakerView {
     }
 
     public String promptForFileName() {
-        return console.promptForString("Please enter the file name: ");
+        return console.promptForString("Enter the file name: ");
     }
 
     public void printMessage(String message) {
@@ -43,7 +45,38 @@ public class MatchMakerView {
         return console.promptForYesNo(prompt);
     }
 
+    public void promptToUpdateWeight() {
+        String weightPrompt = console.promptForString("Select weight division");
 
 
+    }
+
+    public void promptToUpdateGender() {
+        console.printMessage(""); // Empty line
+        console.printMessage("Select gender division.");
+    }
+
+    public void promptToUpdateAge() {
+        console.printMessage(""); // Empty line
+        console.printMessage("Select age division.");
+    }
+
+    public void promptToUpdateBelt() {
+        console.printMessage(""); // Empty line
+        console.printMessage("Select belt division.");
+    }
+
+    public void promptToUpdateAthleteOne() {
+        String athleteOnePrompt = console.promptForString("Enter Athlete One name (First Last)");
+    }
+
+    public void promptToUpdateAthleteTwo() {
+        String athleteTwoPrompt = console.promptForString("Enter Athlete Two name (First Last)");
+    }
+
+
+    public void promptToUpdateMatchLength() {
+        String matchTimePrompt = console.promptForString("Enter match length");
+    }
 
 }
