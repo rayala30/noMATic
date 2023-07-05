@@ -12,7 +12,7 @@ public class MatchMakerController {
     // Instance variables
 
     private final MatchMakerView view;
-    private Match currentMatch;
+    private Match currentMatch; // Null Value until setup complete
 
 
     // Constructor
@@ -27,12 +27,6 @@ public class MatchMakerController {
     }
 
 
-    private void createNewMatch(Athlete athleteOne, Athlete athleteTwo, Belt belt, Weight weight, String age, String gender, int time) {
-        currentMatch = new Match(athleteOne, athleteTwo, belt, weight, age, gender, time);
-
-        // TODO
-        // Add a match number
-    }
 
     private void displayStartingMenu() {
         final String WELCOME_MESSAGE = "Welcome to the no-MAT-ic Mat(ch)Maker";
@@ -73,25 +67,40 @@ public class MatchMakerController {
         String matchAge = ageSetupMenu();
 
         // Prompt for Weight division
+        Weight matchWeight = weightSetUpMenu();
+
+        // Prompt for Time
+        int matchLength = timeSetupMenu();
+
+        // Prompt for Athlete One
+        Athlete athleteOne = athleteOneSetup();
+
+        // Prompt for Athlete Two
+        Athlete athleteTwo = athleteTwoSetup();
+
+        // Set current match
+        currentMatch = new Match(athleteOne, athleteTwo, matchBelt, matchWeight, matchAge, matchGender, matchLength);
+
+        // Display currentMatch Information
+        view.printMessage("");
+        view.printMessage("Setting up match.");
+        view.printMessage("");
+        view.printMessage("MATCH SET FOR " + matchAge.toUpperCase() + " " + matchGender.toUpperCase() + " " + matchBelt.toString() + " BELT DIVISION AT " + matchWeight.toString() + "." );
+        view.printMessage(athleteOne.getName().toUpperCase() + " VS. " + athleteTwo.getName().toUpperCase());
+        view.printMessage("");
 
 
-
-        // TODO
-        // createNewMatch();
 
         // Prompt to ask if information needs editing
         // Else use runMatch()
         // Else exit application
 
-//        boolean finished = false;
-//        while (!finished) {
-//
-//
-//        }
-
     }
 
     private void runMatch() {
+
+        boolean matchOngoing = true;
+
 
     }
 
@@ -104,16 +113,69 @@ public class MatchMakerController {
     }
 
     private Athlete athleteOneSetup() {
-        return null;
+        String name = view.promptToUpdateAthleteOne();
+        return new Athlete(name);
     }
 
     private Athlete athleteTwoSetup() {
-        return null;
+        String name = view.promptToUpdateAthleteTwo();
+        return new Athlete(name);
     }
 
-    private void displayWeightMenu() {
+    private Weight weightSetUpMenu() {
+        Weight weightDivision = null;
+        view.promptToUpdateWeight();
 
+        final String ROOSTERWEIGHT = Weight.ROOSTERWEIGHT.toString();
+        final String LIGHT_FEATHERWEIGHT = Weight.LIGHT_FEATHERWEIGHT.toString().replaceAll("_", "-");
+        final String FEATHERWEIGHT = Weight.FEATHERWEIGHT.toString();
+        final String LIGHTWEIGHT = Weight.LIGHTWEIGHT.toString();
+        final String MIDDLEWEIGHT = Weight.MIDDLEWEIGHT.toString();
+        final String MEDIUM_HEAVYWEIGHT = Weight.MEDIUM_HEAVYWEIGHT.toString().replaceAll("_", "-");
+        final String HEAVYWEIGHT = Weight.HEAVYWEIGHT.toString();
+        final String SUPER_HEAVYWEIGHT = Weight.SUPER_HEAVYWEIGHT.toString().replaceAll("_", "-");
+        final String ULTRA_HEAVYWEIGHT = Weight.ULTRA_HEAVYWEIGHT.toString().replaceAll("_", "-");
+        final String OPEN_WEIGHT = Weight.OPEN_WEIGHT.toString().replaceAll("_", "-");
 
+        final String[] WEIGHT_OPTIONS = {ROOSTERWEIGHT, LIGHT_FEATHERWEIGHT, FEATHERWEIGHT, LIGHTWEIGHT, MIDDLEWEIGHT,
+                MEDIUM_HEAVYWEIGHT, HEAVYWEIGHT, SUPER_HEAVYWEIGHT, ULTRA_HEAVYWEIGHT, OPEN_WEIGHT
+        };
+
+        String selection = view.getMenuSelection("WEIGHT DIVISIONS", WEIGHT_OPTIONS);
+
+        if (selection.equals(ROOSTERWEIGHT)) {
+            weightDivision = Weight.ROOSTERWEIGHT;
+            view.printMessage("Weight division set to Roosterweight.");
+        } else if (selection.equals(LIGHT_FEATHERWEIGHT)) {
+            weightDivision = Weight.LIGHT_FEATHERWEIGHT;
+            view.printMessage("Weight division set to Light-Featherweight.");
+        } else if (selection.equals(FEATHERWEIGHT)) {
+            weightDivision = Weight.FEATHERWEIGHT;
+            view.printMessage("Weight division set to Featherweight.");
+        } else if (selection.equals(LIGHTWEIGHT)) {
+            weightDivision = Weight.LIGHTWEIGHT;
+            view.printMessage("Weight division set to Lightweight.");
+        } else if (selection.equals(MIDDLEWEIGHT)) {
+            weightDivision = Weight.MIDDLEWEIGHT;
+            view.printMessage("Weight division set to Middleweight.");
+        } else if (selection.equals(MEDIUM_HEAVYWEIGHT)) {
+            weightDivision = Weight.MEDIUM_HEAVYWEIGHT;
+            view.printMessage("Weight division set to Medium-Heavyweight.");
+        } else if (selection.equals(HEAVYWEIGHT)) {
+            weightDivision = Weight.HEAVYWEIGHT;
+            view.printMessage("Weight division set to Heavyweight.");
+        } else if (selection.equals(SUPER_HEAVYWEIGHT)) {
+            weightDivision = Weight.SUPER_HEAVYWEIGHT;
+            view.printMessage("Weight division set to Super-Heavyweight.");
+        } else if (selection.equals(ULTRA_HEAVYWEIGHT)) {
+            weightDivision = Weight.ULTRA_HEAVYWEIGHT;
+            view.printMessage("Weight division set to Ultra-Heavyweight.");
+        } else if (selection.equals(OPEN_WEIGHT)) {
+            weightDivision = Weight.OPEN_WEIGHT;
+            view.printMessage("Weight division set to Open-Weight.");
+        }
+
+        return weightDivision;
     }
 
     private Belt beltSetupMenu() {
@@ -126,9 +188,9 @@ public class MatchMakerController {
         final String BROWN_BELT = Belt.BROWN.toString();
         final String BLACK_BELT = Belt.BLACK.toString();
 
-        final String[] WEIGHT_OPTIONS = {WHITE_BELT, BLUE_BELT, PURPLE_BELT, BROWN_BELT, BLACK_BELT};
+        final String[] BELT_OPTIONS = {WHITE_BELT, BLUE_BELT, PURPLE_BELT, BROWN_BELT, BLACK_BELT};
 
-        String selection = view.getMenuSelection("BELT DIVISIONS", WEIGHT_OPTIONS);
+        String selection = view.getMenuSelection("BELT DIVISIONS", BELT_OPTIONS);
 
         if (selection.equals(WHITE_BELT)) {
             beltDivision = Belt.WHITE;
@@ -196,15 +258,44 @@ public class MatchMakerController {
             view.printMessage("Gender division set to Male.");
         } else {
             genderDivision = FEMALE_DIVISION;
-            view.printMessage("Gender division set to Female");
+            view.printMessage("Gender division set to Female.");
         }
 
         return genderDivision;
 
     }
 
-    private void displayTimeMenu() {
+    private int timeSetupMenu() {
+        int timerLength = 0;
+        view.promptToUpdateMatchLength();
 
+        final String FIVE = "5:00";
+        final String SIX = "6:00";
+        final String SEVEN = "7:00";
+        final String EIGHT = "8:00";
+        final String TEN = "10:00";
+        final String[] TIME_OPTIONS = {FIVE, SIX, SEVEN, EIGHT, TEN};
+
+        String selection = view.getMenuSelection("MATCH LENGTH", TIME_OPTIONS);
+
+        if (selection.equals(FIVE)) {
+            timerLength = 300000;
+            view.printMessage("Match set for 5:00.");
+        } else if (selection.equals(SIX)) {
+            timerLength = 360000;
+            view.printMessage("Match set for 6:00.");
+        } else if (selection.equals(SEVEN)) {
+            timerLength = 420000;
+            view.printMessage("Match set for 7:00.");
+        } else if (selection.equals(EIGHT)) {
+            timerLength = 480000;
+            view.printMessage("Match set for 8:00.");
+        } else if (selection.equals(TEN)) {
+            timerLength = 600000;
+            view.printMessage("Match set for 10:00.");
+        }
+
+        return timerLength;
     }
 
     private void loadMatchResults() {

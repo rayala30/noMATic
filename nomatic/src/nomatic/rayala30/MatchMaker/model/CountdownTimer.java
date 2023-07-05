@@ -11,6 +11,11 @@ public class CountdownTimer {
     // declare Timer t
     Timer timer;
 
+    // Constructor
+    public CountdownTimer(int length) {
+
+    }
+
     // getters
     public int getMinutes() {
         return this.minutes;

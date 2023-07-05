@@ -16,6 +16,10 @@ public class Athlete extends Biographic {
         this.weight = weight;
     }
 
+    public Athlete(String name) {
+        super(name);
+    }
+
     // getters
 
 

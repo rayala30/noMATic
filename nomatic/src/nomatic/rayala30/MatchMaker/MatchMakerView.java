@@ -24,6 +24,10 @@ public class MatchMakerView {
         return console.promptForString("Enter the file name: ");
     }
 
+    public String promptForValue(String messagePrompt) {
+        return console.promptForString(messagePrompt);
+    }
+
     public void printMessage(String message) {
         console.printMessage(message);
     }
@@ -46,9 +50,8 @@ public class MatchMakerView {
     }
 
     public void promptToUpdateWeight() {
-        String weightPrompt = console.promptForString("Select weight division");
-
-
+        console.printMessage(""); // Empty line
+        console.printMessage("Select weight division.");
     }
 
     public void promptToUpdateGender() {
@@ -66,17 +69,20 @@ public class MatchMakerView {
         console.printMessage("Select belt division.");
     }
 
-    public void promptToUpdateAthleteOne() {
-        String athleteOnePrompt = console.promptForString("Enter Athlete One name (First Last)");
+    public String promptToUpdateAthleteOne() {
+        String athleteOnePrompt = console.promptForString("Enter Athlete One name (First Last): ");
+        return athleteOnePrompt;
     }
 
-    public void promptToUpdateAthleteTwo() {
-        String athleteTwoPrompt = console.promptForString("Enter Athlete Two name (First Last)");
+    public String promptToUpdateAthleteTwo() {
+        String athleteTwoPrompt = console.promptForString("Enter Athlete Two name (First Last): ");
+        return athleteTwoPrompt;
     }
 
 
     public void promptToUpdateMatchLength() {
-        String matchTimePrompt = console.promptForString("Enter match length");
+        console.printMessage(""); // Empty line
+        console.printMessage("Select match length.");
     }
 
 }

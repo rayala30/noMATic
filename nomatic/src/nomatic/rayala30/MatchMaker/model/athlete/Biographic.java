@@ -14,6 +14,10 @@ public class Biographic {
         this.gender = gender;
     }
 
+    public Biographic(String name) {
+        this.name = name;
+    }
+
 
     // getters
     public String getName() {

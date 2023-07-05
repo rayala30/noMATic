@@ -59,6 +59,10 @@ public class Match {
         return matchGender;
     }
 
+    public Belt getMatchBelt() {
+        return matchBelt;
+    }
+
 
     // Setters
 
@@ -80,7 +84,5 @@ public class Match {
 
 
     // Methods
-
-
 
 }
