@@ -85,4 +85,19 @@ public class MatchMakerView {
         console.printMessage("Select match length.");
     }
 
+    public void promptForMatchAction() {
+        console.printMessage("");
+        console.printMessage("Choose match action: ");
+    }
+
+    public void promptForPointAction() {
+        console.printMessage("");
+        console.printMessage("Select point type: ");
+    }
+
+    public void promptForPointReview() {
+        console.printMessage("");
+        console.printMessage("Choose category to review: ");
+    }
+
 }

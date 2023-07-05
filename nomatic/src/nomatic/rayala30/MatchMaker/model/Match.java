@@ -15,6 +15,12 @@ public class Match {
     private Weight matchWeight;
     private String matchAge;
     private String matchGender;
+    private int athleteOnePoints;
+    private int athleteTwoPoints;
+    private int athleteOneAdv;
+    private int athleteTwoAdv;
+    private int athleteOnePenalty;
+    private int athleteTwoPenalty;
 
 
     // Constructors
@@ -23,6 +29,7 @@ public class Match {
 
     }
 
+    // This constructor set is for initial Match setup
     public Match(Athlete athleteOne, Athlete athleteTwo, Belt matchBelt, Weight matchWeight, String matchAge, String matchGender, int matchLength) {
         this.athleteOne = athleteOne;
         this.athleteTwo = athleteTwo;
@@ -63,6 +70,31 @@ public class Match {
         return matchBelt;
     }
 
+    public int getAthleteOnePoints() {
+        return athleteOnePoints;
+    }
+
+    public int getAthleteTwoPoints() {
+        return athleteTwoPoints;
+    }
+
+    public int getAthleteOneAdv() {
+        return athleteOneAdv;
+    }
+
+    public int getAthleteTwoAdv() {
+        return athleteTwoAdv;
+    }
+
+    public int getAthleteOnePenalty() {
+        return athleteOnePenalty;
+    }
+
+    public int getAthleteTwoPenalty() {
+        return athleteTwoPenalty;
+    }
+
+
 
     // Setters
 
@@ -82,7 +114,43 @@ public class Match {
         this.matchGender = matchGender;
     }
 
+    public void setAthleteOnePoints(int athleteOnePoints) {
+        this.athleteOnePoints = athleteOnePoints;
+    }
+
+    public void setAthleteTwoPoints(int athleteTwoPoints) {
+        this.athleteTwoPoints = athleteTwoPoints;
+    }
+
+    public void setAthleteOneAdv(int athleteOneAdv) {
+        this.athleteOneAdv = athleteOneAdv;
+    }
+
+    public void setAthleteTwoAdv(int athleteTwoAdv) {
+        this.athleteTwoAdv = athleteTwoAdv;
+    }
+
+    public void setAthleteOnePenalty(int athleteOnePenalty) {
+        this.athleteOnePenalty = athleteOnePenalty;
+    }
+
+    public void setAthleteTwoPenalty(int athleteTwoPenalty) {
+        this.athleteTwoPenalty = athleteTwoPenalty;
+    }
+
+
 
     // Methods
+
+    public static int pointsCalculator(String pointSelection) {
+        int points = 0;
+
+
+        return points;
+    }
+
+    public String displayScore(int athletePoints, int athleteAdvantages, int athletePenalties) {
+        return null;
+    }
 
 }

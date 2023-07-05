@@ -59,28 +59,20 @@ public class MatchMakerController {
     private void displayMatchSetupMenu() {
         // Prompt for Belt division
         Belt matchBelt = beltSetupMenu();
-
         // Prompt for Gender division
         String matchGender = genderSetupMenu();
-
         // Prompt for Age division
         String matchAge = ageSetupMenu();
-
         // Prompt for Weight division
         Weight matchWeight = weightSetUpMenu();
-
         // Prompt for Time
         int matchLength = timeSetupMenu();
-
         // Prompt for Athlete One
         Athlete athleteOne = athleteOneSetup();
-
         // Prompt for Athlete Two
         Athlete athleteTwo = athleteTwoSetup();
-
         // Set current match
         currentMatch = new Match(athleteOne, athleteTwo, matchBelt, matchWeight, matchAge, matchGender, matchLength);
-
         // Display currentMatch Information
         view.printMessage("");
         view.printMessage("Setting up match.");
@@ -89,20 +81,91 @@ public class MatchMakerController {
         view.printMessage(athleteOne.getName().toUpperCase() + " VS. " + athleteTwo.getName().toUpperCase());
         view.printMessage("");
 
+        // TODO
+        // Create prompt to ask if information needs editing
 
-
-        // Prompt to ask if information needs editing
-        // Else use runMatch()
-        // Else exit application
-
+        // Start match
+        runMatch(currentMatch);
     }
 
-    private void runMatch() {
+    private void runMatch(Match currentMatch) {
+        // Set default points
+        currentMatch.setAthleteOnePoints(0);
+        currentMatch.setAthleteOnePoints(0);
+        // Set default advantages
+        currentMatch.setAthleteOneAdv(0);
+        currentMatch.setAthleteTwoAdv(0);
+        // Set default penalties
+        currentMatch.setAthleteOnePenalty(0);
+        currentMatch.setAthleteTwoPenalty(0);
 
+
+        // Get current points
+        int athleteOnePoints = currentMatch.getAthleteOnePoints();
+        int athleteTwoPoints = currentMatch.getAthleteTwoPoints();
+        // Get current advantages
+        int athleteOneAdv = currentMatch.getAthleteOneAdv();
+        int athleteTwoAdv = currentMatch.getAthleteTwoAdv();
+        // Get current penalties
+        int athleteOnePenalty = currentMatch.getAthleteOnePenalty();
+        int athleteTwoPenalty = currentMatch.getAthleteTwoPenalty();
+
+
+        // Point Options
+        final String POINTS = "Points";
+        final String ADVANTAGE = "Advantage";
+        final String PENALTY = "Penalty";
+        final String SUBMISSION = "Submission";
+        final String DISQUALIFICATION = "Disqualification";
+        final String REVIEW = "Review";
+
+        final String[] MATCH_OPTIONS = {POINTS, ADVANTAGE, PENALTY, SUBMISSION, DISQUALIFICATION, REVIEW};
         boolean matchOngoing = true;
 
+        while(matchOngoing) {
+            // Display score method
+
+            view.promptForMatchAction();
+            String action = view.getMenuSelection("MATCH ACTIONS", MATCH_OPTIONS);
+
+            if (action.equals(POINTS)) {
+                view.promptForPointAction();
+                final String SWEEP = "Sweep";
+                final String TAKEDOWN = "Takedown";
+                final String KNEE_ON_BELLY = "Knee On Belly";
+                final String GUARD_PASS = "Guard Pass";
+                final String MOUNT = "Mount";
+                final String BACK_CONTROL = "Back Control";
+                final String RETURN = "Return";
+
+                final String[] POINTS_OPTIONS = {SWEEP, TAKEDOWN, KNEE_ON_BELLY, GUARD_PASS, MOUNT, BACK_CONTROL, RETURN};
+
+                String pointAction = view.getMenuSelection("POINT ACTIONS", POINTS_OPTIONS);
+                int awardPoint = currentMatch.pointsCalculator(pointAction);
+
+                // Prompt for Athlete Selection
+                view.printMessage("Award points to: ");
+
+
+            } else if (action.equals(ADVANTAGE)) {
+
+            } else if (action.equals(PENALTY)) {
+
+            } else if (action.equals(SUBMISSION)) {
+
+            } else if (action.equals(DISQUALIFICATION)) {
+
+            } else if (action.equals(REVIEW)) {
+
+            }
+
+
+        }
+
 
     }
+
+
 
     private void stopMatch() {
 
