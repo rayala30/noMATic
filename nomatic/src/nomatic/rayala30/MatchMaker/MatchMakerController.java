@@ -4,10 +4,7 @@ import nomatic.rayala30.MatchMaker.model.Match;
 import nomatic.rayala30.MatchMaker.model.athlete.Athlete;
 import nomatic.rayala30.MatchMaker.model.athlete.Belt;
 import nomatic.rayala30.MatchMaker.model.athlete.Weight;
-import nomatic.rayala30.util.BasicConsole;
-import nomatic.rayala30.util.BasicFileStorage;
-import nomatic.rayala30.util.FileStorageException;
-import nomatic.rayala30.util.TextFileStorage;
+import nomatic.rayala30.util.*;
 
 public class MatchMakerController {
 
@@ -16,10 +13,13 @@ public class MatchMakerController {
     private final MatchMakerView view;
     private Match currentMatch; // Null Value until setup complete
 
+    private final MatchMakerStorage storage;
+
 
     // Constructor
-    public MatchMakerController(BasicConsole console, BasicFileStorage storage) {
+    public MatchMakerController(BasicConsole console, BasicFileStorage fileStorage) {
         view = new MatchMakerView(console);
+        storage = new MatchMakerStorage(fileStorage);
     }
 
     // Methods
@@ -27,7 +27,6 @@ public class MatchMakerController {
     public void run() {
         displayStartingMenu();
     }
-
 
 
     private void displayStartingMenu() {
@@ -191,11 +190,11 @@ public class MatchMakerController {
 
                 view.printMessage("Submission win by: ");
                 if (athleteSelection.equals(athleteOne.getName())) {
-                    view.printMessage(athleteOne.getName().toUpperCase() + "wins!");
+                    view.printMessage(athleteOne.getName().toUpperCase() + " WINS!");
                     view.printMessage("Match over.");
                     matchOngoing = false;
                 } else {
-                    view.printMessage(athleteTwo.getName().toUpperCase() + "wins!");
+                    view.printMessage(athleteTwo.getName().toUpperCase() + " WINS!");
                     view.printMessage("Match over.");
                     matchOngoing = false;
                 }
@@ -206,11 +205,11 @@ public class MatchMakerController {
 
                 view.printMessage("Disqualification for: ");
                 if (athleteSelection.equals(athleteOne.getName())) {
-                    view.printMessage(athleteTwo.getName().toUpperCase() + "wins!");
+                    view.printMessage(athleteTwo.getName().toUpperCase() + " WINS!");
                     view.printMessage("Match over.");
                     matchOngoing = false;
                 } else {
-                    view.printMessage(athleteOne.getName().toUpperCase() + "wins!");
+                    view.printMessage(athleteOne.getName().toUpperCase() + " WINS!");
                     view.printMessage("Match over.");
                     matchOngoing = false;
                 }
@@ -259,26 +258,50 @@ public class MatchMakerController {
                 }
 
             }
-
         }
-
+        // After match completes, run postMatchMenu
+        postMatchMenu();
     }
 
+    private void postMatchMenu() {
+        final String SAVE = "Save this match";
+        final String NEXT = "Create next match";
+        final String EXIT = "Exit MatchMaker";
+        final String[] POST_OPTIONS = {SAVE, NEXT, EXIT};
 
+        String selection = view.getMenuSelection("POST-MATCH ACTIONS", POST_OPTIONS);
 
-
-    private void stopMatch() {
-
+        if (selection.equals(SAVE)) {
+            saveMatch();
+        } else if (selection.equals(NEXT)) {
+            displayMatchSetupMenu();
+        } else {
+            view.printMessage("Program closing.");
+            System.exit(0);
+        }
     }
 
     private void saveMatch() {
         String filename = view.promptForFileName();
         if (!filename.isBlank()) {
-//            try {
-//
-//            } catch (FileStorageException e) {
-//                view.printErrorMessage(e.getMessage());
-//            }
+            try {
+                storage.writeMatchToFile(currentMatch, filename);
+            } catch (BasicXmlException e) {
+                view.printErrorMessage("Please make sure your match information does not contain < or > characters");
+            } catch (FileStorageException e) {
+                view.printErrorMessage(e.getMessage());
+            }
+        }
+    }
+
+    private void loadMatchResults() {
+        String filename = view.promptForFileName();
+        if (!filename.isBlank()) {
+            try {
+                currentMatch = storage.readMatchFromFile(filename);
+            } catch (FileStorageException e) {
+                view.printErrorMessage(e.getMessage());
+            }
         }
     }
 
@@ -468,8 +491,6 @@ public class MatchMakerController {
         return timerLength;
     }
 
-    private void loadMatchResults() {
 
-    }
 
 }

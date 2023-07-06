@@ -15,6 +15,9 @@ public class Match implements BasicXml {
     // Instance variables
     private Athlete athleteOne;
     private Athlete athleteTwo;
+    private String matchNumber;
+    private String matchWinner;
+    private String matchWinMethod;
 
     private Belt matchBelt;
     private int matchLength;
@@ -100,7 +103,17 @@ public class Match implements BasicXml {
         return athleteTwoPenalty;
     }
 
+    public String getMatchNumber() {
+        return matchNumber;
+    }
 
+    public String getMatchWinner() {
+        return matchWinner;
+    }
+
+    public String getMatchWinMethod() {
+        return matchWinMethod;
+    }
 
     // Setters
 
@@ -144,7 +157,17 @@ public class Match implements BasicXml {
         this.athleteTwoPenalty = athleteTwoPenalty;
     }
 
+    public void setMatchNumber(String matchNumber) {
+        this.matchNumber = matchNumber;
+    }
 
+    public void setMatchWinner(String matchWinner) {
+        this.matchWinner = matchWinner;
+    }
+
+    public void setMatchWinMethod(String matchWinMethod) {
+        this.matchWinMethod = matchWinMethod;
+    }
 
     // Methods
 
@@ -187,12 +210,35 @@ public class Match implements BasicXml {
 
     @Override
     public void initializeFromXml(String xml) {
+        String athleteOneName = athleteOne.getName();
+        String athleteTwoName = athleteTwo.getName();
+
+        BasicXmlParser parser = new BasicXmlParser(xml);
+        matchNumber = parser.getStringContent("matchNumber");
+        matchWeight = Weight.valueOf(parser.getStringContent("matchWeight"));
+        matchAge = parser.getStringContent("matchAge");
+        matchBelt = Belt.valueOf(parser.getStringContent("matchBelt"));
+        athleteOneName = parser.getStringContent("athleteOne");
+        athleteTwoName = parser.getStringContent("athleteTwo");
+        matchWinner = parser.getStringContent("matchWinner");
+        matchWinMethod = parser.getStringContent("matchWinMethod");
 
     }
 
+
     @Override
     public String getInnerXml() {
-        return null;
+        BasicXmlBuilder builder = new BasicXmlBuilder();
+        builder.addElement("matchNumber", matchNumber);
+        builder.addElement("matchWeight", matchWeight);
+        builder.addElement("matchAge", matchAge);
+        builder.addElement("matchBelt", matchBelt);
+        builder.addElement("athleteOne", athleteOne);
+        builder.addElement("athleteTwo", athleteTwo);
+        builder.addElement("matchWinner", matchWinner);
+        builder.addElement("matchWinMethod", matchWinMethod);
+
+        return builder.build();
     }
 
 

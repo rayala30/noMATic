@@ -2,6 +2,7 @@ package nomatic.rayala30.MatchMaker;
 
 import nomatic.rayala30.MatchMaker.model.Match;
 import nomatic.rayala30.util.BasicFileStorage;
+import nomatic.rayala30.util.BasicXmlBuilder;
 import nomatic.rayala30.util.BasicXmlParser;
 import nomatic.rayala30.util.FileStorageException;
 
@@ -29,8 +30,15 @@ public class MatchMakerStorage {
             throw new FileStorageException("No match data found in " + filename);
         } else {
             Match result = new Match();
-
+            result.initializeFromXml(innerXml);
+            return result;
         }
+    }
+
+    public void writeMatchToFile(Match match, String filename) throws FileStorageException {
+        // Call a static method
+        String xml = BasicXmlBuilder.createSingleElement("match", match.getInnerXml());
+        fileStorage.writeContentsToFile(xml, filename);
     }
 
 }
