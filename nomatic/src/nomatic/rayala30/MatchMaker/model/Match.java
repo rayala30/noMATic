@@ -3,11 +3,14 @@ package nomatic.rayala30.MatchMaker.model;
 import nomatic.rayala30.MatchMaker.model.athlete.Athlete;
 import nomatic.rayala30.MatchMaker.model.athlete.Belt;
 import nomatic.rayala30.MatchMaker.model.athlete.Weight;
+import nomatic.rayala30.util.BasicXml;
+import nomatic.rayala30.util.BasicXmlParser;
+import nomatic.rayala30.util.BasicXmlBuilder;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Match {
+public class Match implements BasicXml {
 
     // Instance variables
     private Athlete athleteOne;
@@ -179,5 +182,20 @@ public class Match {
                 + "Advantages: " + athleteAdvantages + System.lineSeparator()
                 + "Penalties: " + athletePenalties + System.lineSeparator();
     }
+
+    // BasicXml Methods
+
+    @Override
+    public void initializeFromXml(String xml) {
+
+    }
+
+    @Override
+    public String getInnerXml() {
+        return null;
+    }
+
+
+
 
 }

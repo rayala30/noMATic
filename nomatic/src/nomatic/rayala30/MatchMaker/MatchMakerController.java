@@ -6,6 +6,8 @@ import nomatic.rayala30.MatchMaker.model.athlete.Belt;
 import nomatic.rayala30.MatchMaker.model.athlete.Weight;
 import nomatic.rayala30.util.BasicConsole;
 import nomatic.rayala30.util.BasicFileStorage;
+import nomatic.rayala30.util.FileStorageException;
+import nomatic.rayala30.util.TextFileStorage;
 
 public class MatchMakerController {
 
@@ -270,7 +272,14 @@ public class MatchMakerController {
     }
 
     private void saveMatch() {
-
+        String filename = view.promptForFileName();
+        if (!filename.isBlank()) {
+//            try {
+//
+//            } catch (FileStorageException e) {
+//                view.printErrorMessage(e.getMessage());
+//            }
+        }
     }
 
     private Athlete athleteOneSetup() {
