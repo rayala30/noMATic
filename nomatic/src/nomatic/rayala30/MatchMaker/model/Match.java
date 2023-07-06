@@ -173,8 +173,11 @@ public class Match {
         return points;
     }
 
-    public String displayScore(int athletePoints, int athleteAdvantages, int athletePenalties) {
-        return null;
+    public String displayScore(Athlete athlete, int athletePoints, int athleteAdvantages, int athletePenalties) {
+        return athlete.getName().toUpperCase() + System.lineSeparator()
+                + "Points: " + athletePoints + System.lineSeparator()
+                + "Advantages: " + athleteAdvantages + System.lineSeparator()
+                + "Penalties: " + athletePenalties + System.lineSeparator();
     }
 
 }

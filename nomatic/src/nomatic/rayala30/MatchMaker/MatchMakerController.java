@@ -111,6 +111,7 @@ public class MatchMakerController {
         int athleteTwoPenalty = currentMatch.getAthleteTwoPenalty();
 
 
+
         // Point Options
         final String POINTS = "Points";
         final String ADVANTAGE = "Advantage";
@@ -123,6 +124,12 @@ public class MatchMakerController {
         boolean matchOngoing = true;
 
         while(matchOngoing) {
+            // Display Score
+            String athleteOneOverallScore = currentMatch.displayScore(athleteOne, athleteOnePoints, athleteOneAdv, athleteOnePenalty);
+            String athleteTwoOverallScore = currentMatch.displayScore(athleteTwo, athleteTwoPoints, athleteTwoAdv, athleteTwoPenalty);
+            view.printMessage(athleteOneOverallScore);
+            view.printMessage(athleteTwoOverallScore);
+
             final String[] ATHLETE_OPTIONS = {athleteOne.getName(), athleteTwo.getName()};
 
             view.promptForMatchAction();
@@ -251,10 +258,7 @@ public class MatchMakerController {
 
             }
 
-            // Display Score
-//            currentMatch.displayScore();
         }
-
 
     }
 
