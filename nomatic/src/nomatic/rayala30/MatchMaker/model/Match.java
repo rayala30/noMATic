@@ -4,6 +4,9 @@ import nomatic.rayala30.MatchMaker.model.athlete.Athlete;
 import nomatic.rayala30.MatchMaker.model.athlete.Belt;
 import nomatic.rayala30.MatchMaker.model.athlete.Weight;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Match {
 
     // Instance variables
@@ -144,8 +147,29 @@ public class Match {
 
     public static int pointsCalculator(String pointSelection) {
         int points = 0;
+        // Create pointType map
+        Map<String, Integer> pointTypes = new HashMap<>();
+        // Add point values
+        pointTypes.put("sweep", 2);
+        pointTypes.put("takedown", 2);
+        pointTypes.put("knee on belly", 2);
+        pointTypes.put("guard pass", 3);
+        pointTypes.put("mount", 4);
+        pointTypes.put("back control", 4);
 
-
+        if (pointSelection.equalsIgnoreCase("sweep")) {
+            points = pointTypes.get("sweep");
+        } else if (pointSelection.equalsIgnoreCase("takedown")) {
+            points = pointTypes.get("takedown");
+        } else if (pointSelection.equalsIgnoreCase("knee on belly")) {
+            points = pointTypes.get("knee on belly");
+        } else if (pointSelection.equalsIgnoreCase("guard pass")) {
+            points = pointTypes.get("guard pass");
+        } else if (pointSelection.equalsIgnoreCase("mount")) {
+            points = pointTypes.get("mount");
+        } else if (pointSelection.equalsIgnoreCase("back control")) {
+            points = pointTypes.get("back control");
+        }
         return points;
     }
 

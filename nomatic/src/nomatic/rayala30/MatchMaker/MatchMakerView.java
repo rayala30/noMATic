@@ -49,6 +49,10 @@ public class MatchMakerView {
         return console.promptForYesNo(prompt);
     }
 
+    public int promptForInteger(String prompt) {
+        return console.promptForInteger(prompt);
+    }
+
     public void promptToUpdateWeight() {
         console.printMessage(""); // Empty line
         console.printMessage("Select weight division.");

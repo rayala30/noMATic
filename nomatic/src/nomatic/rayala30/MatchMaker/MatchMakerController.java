@@ -85,10 +85,10 @@ public class MatchMakerController {
         // Create prompt to ask if information needs editing
 
         // Start match
-        runMatch(currentMatch);
+        runMatch(currentMatch, athleteOne, athleteTwo);
     }
 
-    private void runMatch(Match currentMatch) {
+    private void runMatch(Match currentMatch, Athlete athleteOne, Athlete athleteTwo) {
         // Set default points
         currentMatch.setAthleteOnePoints(0);
         currentMatch.setAthleteOnePoints(0);
@@ -123,7 +123,7 @@ public class MatchMakerController {
         boolean matchOngoing = true;
 
         while(matchOngoing) {
-            // Display score method
+            final String[] ATHLETE_OPTIONS = {athleteOne.getName(), athleteTwo.getName()};
 
             view.promptForMatchAction();
             String action = view.getMenuSelection("MATCH ACTIONS", MATCH_OPTIONS);
@@ -140,30 +140,124 @@ public class MatchMakerController {
 
                 final String[] POINTS_OPTIONS = {SWEEP, TAKEDOWN, KNEE_ON_BELLY, GUARD_PASS, MOUNT, BACK_CONTROL, RETURN};
 
+                // Athlete selection option
+                String athleteSelection = view.getMenuSelection("ATHLETE SELECTION", ATHLETE_OPTIONS);
+
                 String pointAction = view.getMenuSelection("POINT ACTIONS", POINTS_OPTIONS);
                 int awardPoint = currentMatch.pointsCalculator(pointAction);
 
                 // Prompt for Athlete Selection
                 view.printMessage("Award points to: ");
-
+                if (athleteSelection.equals(athleteOne.getName())) {
+                    athleteOnePoints += awardPoint;
+                } else {
+                    athleteTwoPoints += awardPoint;
+                }
 
             } else if (action.equals(ADVANTAGE)) {
+                // Athlete selection option
+                String athleteSelection = view.getMenuSelection("ATHLETE SELECTION", ATHLETE_OPTIONS);
+
+                view.printMessage("Award advantage to: ");
+                if (athleteSelection.equals(athleteOne.getName())) {
+                    athleteOneAdv++;
+                } else {
+                    athleteTwoAdv++;
+                }
 
             } else if (action.equals(PENALTY)) {
+                // Athlete selection option
+                String athleteSelection = view.getMenuSelection("ATHLETE SELECTION", ATHLETE_OPTIONS);
+
+                view.printMessage("Give penalty to: ");
+                if (athleteSelection.equals(athleteOne.getName())) {
+                    athleteOnePenalty++;
+                } else {
+                    athleteTwoPenalty++;
+                }
 
             } else if (action.equals(SUBMISSION)) {
+                // Athlete selection option
+                String athleteSelection = view.getMenuSelection("ATHLETE SELECTION", ATHLETE_OPTIONS);
+
+                view.printMessage("Submission win by: ");
+                if (athleteSelection.equals(athleteOne.getName())) {
+                    view.printMessage(athleteOne.getName().toUpperCase() + "wins!");
+                    view.printMessage("Match over.");
+                    matchOngoing = false;
+                } else {
+                    view.printMessage(athleteTwo.getName().toUpperCase() + "wins!");
+                    view.printMessage("Match over.");
+                    matchOngoing = false;
+                }
 
             } else if (action.equals(DISQUALIFICATION)) {
+                // Athlete selection option
+                String athleteSelection = view.getMenuSelection("ATHLETE SELECTION", ATHLETE_OPTIONS);
+
+                view.printMessage("Disqualification for: ");
+                if (athleteSelection.equals(athleteOne.getName())) {
+                    view.printMessage(athleteTwo.getName().toUpperCase() + "wins!");
+                    view.printMessage("Match over.");
+                    matchOngoing = false;
+                } else {
+                    view.printMessage(athleteOne.getName().toUpperCase() + "wins!");
+                    view.printMessage("Match over.");
+                    matchOngoing = false;
+                }
 
             } else if (action.equals(REVIEW)) {
+                // Athlete selection option
+                String athleteSelection = view.getMenuSelection("ATHLETE SELECTION", ATHLETE_OPTIONS);
+                final String EDIT_POINTS = "Edit points";
+                final String EDIT_ADV = "Edit advantage";
+                final String EDIT_PEN = "Edit penalty";
+                String[] options = {EDIT_POINTS, EDIT_ADV, EDIT_PEN};
+                String optionSelection = view.getMenuSelection("REVIEW OPTIONS", options);
+
+                view.promptForPointReview();
+
+                if (optionSelection.equals(EDIT_POINTS)) {
+                    view.printMessage("Enter point deduction: ");
+                    String prompt = "";
+                    int deductionValue = view.promptForInteger(prompt);
+
+                    if (athleteSelection.equals(athleteOne.getName())) {
+                        athleteOnePoints -= deductionValue;
+                    } else {
+                        athleteTwoPoints -= deductionValue;
+                    }
+                } else if (optionSelection.equals(EDIT_ADV)) {
+                    view.printMessage("Enter advantage deduction: ");
+                    String prompt = "";
+                    int deductionValue = view.promptForInteger(prompt);
+
+                    if (athleteSelection.equals(athleteOne.getName())) {
+                        athleteOneAdv -= deductionValue;
+                    } else {
+                        athleteTwoAdv -= deductionValue;
+                    }
+                } else if (optionSelection.equals(EDIT_PEN)) {
+                    view.printMessage("Enter penalty deduction: ");
+                    String prompt = "";
+                    int deductionValue = view.promptForInteger(prompt);
+
+                    if (athleteSelection.equals(athleteOne.getName())) {
+                        athleteOnePenalty -= deductionValue;
+                    } else {
+                        athleteTwoPenalty -= deductionValue;
+                    }
+                }
 
             }
 
-
+            // Display Score
+//            currentMatch.displayScore();
         }
 
 
     }
+
 
 
 
