@@ -128,8 +128,11 @@ public class MatchMakerController {
             // Display Score
             String athleteOneOverallScore = currentMatch.displayScore(athleteOne, athleteOnePoints, athleteOneAdv, athleteOnePenalty);
             String athleteTwoOverallScore = currentMatch.displayScore(athleteTwo, athleteTwoPoints, athleteTwoAdv, athleteTwoPenalty);
+            view.printDivider();
             view.printMessage(athleteOneOverallScore);
+            view.printDivider();
             view.printMessage(athleteTwoOverallScore);
+            view.printDivider();
 
             final String[] ATHLETE_OPTIONS = {athleteOne.getName(), athleteTwo.getName()};
 
@@ -319,16 +322,16 @@ public class MatchMakerController {
         Weight weightDivision = null;
         view.promptToUpdateWeight();
 
-        final String ROOSTERWEIGHT = Weight.ROOSTERWEIGHT.toString();
-        final String LIGHT_FEATHERWEIGHT = Weight.LIGHT_FEATHERWEIGHT.toString().replaceAll("_", "-");
-        final String FEATHERWEIGHT = Weight.FEATHERWEIGHT.toString();
-        final String LIGHTWEIGHT = Weight.LIGHTWEIGHT.toString();
-        final String MIDDLEWEIGHT = Weight.MIDDLEWEIGHT.toString();
-        final String MEDIUM_HEAVYWEIGHT = Weight.MEDIUM_HEAVYWEIGHT.toString().replaceAll("_", "-");
-        final String HEAVYWEIGHT = Weight.HEAVYWEIGHT.toString();
-        final String SUPER_HEAVYWEIGHT = Weight.SUPER_HEAVYWEIGHT.toString().replaceAll("_", "-");
-        final String ULTRA_HEAVYWEIGHT = Weight.ULTRA_HEAVYWEIGHT.toString().replaceAll("_", "-");
-        final String OPEN_WEIGHT = Weight.OPEN_WEIGHT.toString().replaceAll("_", "-");
+        final String ROOSTERWEIGHT = Weight.Roosterweight.toString();
+        final String LIGHT_FEATHERWEIGHT = Weight.Light_Featherweight.toString().replaceAll("_", "-");
+        final String FEATHERWEIGHT = Weight.Featherweight.toString();
+        final String LIGHTWEIGHT = Weight.Lightweight.toString();
+        final String MIDDLEWEIGHT = Weight.Middleweight.toString();
+        final String MEDIUM_HEAVYWEIGHT = Weight.Medium_Heavyweight.toString().replaceAll("_", "-");
+        final String HEAVYWEIGHT = Weight.Heavyweight.toString();
+        final String SUPER_HEAVYWEIGHT = Weight.Super_Heavyweight.toString().replaceAll("_", "-");
+        final String ULTRA_HEAVYWEIGHT = Weight.Ultra_Heavyweight.toString().replaceAll("_", "-");
+        final String OPEN_WEIGHT = Weight.Open_Weight.toString().replaceAll("_", "-");
 
         final String[] WEIGHT_OPTIONS = {ROOSTERWEIGHT, LIGHT_FEATHERWEIGHT, FEATHERWEIGHT, LIGHTWEIGHT, MIDDLEWEIGHT,
                 MEDIUM_HEAVYWEIGHT, HEAVYWEIGHT, SUPER_HEAVYWEIGHT, ULTRA_HEAVYWEIGHT, OPEN_WEIGHT
@@ -337,34 +340,34 @@ public class MatchMakerController {
         String selection = view.getMenuSelection("WEIGHT DIVISIONS", WEIGHT_OPTIONS);
 
         if (selection.equals(ROOSTERWEIGHT)) {
-            weightDivision = Weight.ROOSTERWEIGHT;
+            weightDivision = Weight.Roosterweight;
             view.printMessage("Weight division set to Roosterweight.");
         } else if (selection.equals(LIGHT_FEATHERWEIGHT)) {
-            weightDivision = Weight.LIGHT_FEATHERWEIGHT;
+            weightDivision = Weight.Light_Featherweight;
             view.printMessage("Weight division set to Light-Featherweight.");
         } else if (selection.equals(FEATHERWEIGHT)) {
-            weightDivision = Weight.FEATHERWEIGHT;
+            weightDivision = Weight.Featherweight;
             view.printMessage("Weight division set to Featherweight.");
         } else if (selection.equals(LIGHTWEIGHT)) {
-            weightDivision = Weight.LIGHTWEIGHT;
+            weightDivision = Weight.Lightweight;
             view.printMessage("Weight division set to Lightweight.");
         } else if (selection.equals(MIDDLEWEIGHT)) {
-            weightDivision = Weight.MIDDLEWEIGHT;
+            weightDivision = Weight.Middleweight;
             view.printMessage("Weight division set to Middleweight.");
         } else if (selection.equals(MEDIUM_HEAVYWEIGHT)) {
-            weightDivision = Weight.MEDIUM_HEAVYWEIGHT;
+            weightDivision = Weight.Medium_Heavyweight;
             view.printMessage("Weight division set to Medium-Heavyweight.");
         } else if (selection.equals(HEAVYWEIGHT)) {
-            weightDivision = Weight.HEAVYWEIGHT;
+            weightDivision = Weight.Heavyweight;
             view.printMessage("Weight division set to Heavyweight.");
         } else if (selection.equals(SUPER_HEAVYWEIGHT)) {
-            weightDivision = Weight.SUPER_HEAVYWEIGHT;
+            weightDivision = Weight.Super_Heavyweight;
             view.printMessage("Weight division set to Super-Heavyweight.");
         } else if (selection.equals(ULTRA_HEAVYWEIGHT)) {
-            weightDivision = Weight.ULTRA_HEAVYWEIGHT;
+            weightDivision = Weight.Ultra_Heavyweight;
             view.printMessage("Weight division set to Ultra-Heavyweight.");
         } else if (selection.equals(OPEN_WEIGHT)) {
-            weightDivision = Weight.OPEN_WEIGHT;
+            weightDivision = Weight.Open_Weight;
             view.printMessage("Weight division set to Open-Weight.");
         }
 
@@ -375,34 +378,34 @@ public class MatchMakerController {
         Belt beltDivision = null;
         view.promptToUpdateBelt();
 
-        final String WHITE_BELT = Belt.WHITE.toString();
-        final String BLUE_BELT = Belt.BLUE.toString();
-        final String PURPLE_BELT = Belt.PURPLE.toString();
-        final String BROWN_BELT = Belt.BROWN.toString();
-        final String BLACK_BELT = Belt.BLACK.toString();
+        final String WHITE_BELT = Belt.White.toString();
+        final String BLUE_BELT = Belt.Blue.toString();
+        final String PURPLE_BELT = Belt.Purple.toString();
+        final String BROWN_BELT = Belt.Brown.toString();
+        final String BLACK_BELT = Belt.Black.toString();
 
         final String[] BELT_OPTIONS = {WHITE_BELT, BLUE_BELT, PURPLE_BELT, BROWN_BELT, BLACK_BELT};
 
         String selection = view.getMenuSelection("BELT DIVISIONS", BELT_OPTIONS);
 
         if (selection.equals(WHITE_BELT)) {
-            beltDivision = Belt.WHITE;
+            beltDivision = Belt.White;
             view.printMessage("Belt division set to White.");
         }
         else if (selection.equals(BLUE_BELT)) {
-            beltDivision = Belt.BLUE;
+            beltDivision = Belt.Blue;
             view.printMessage("Belt division set to Blue.");
         }
         else if (selection.equals(PURPLE_BELT)) {
-            beltDivision = Belt.PURPLE;
+            beltDivision = Belt.Purple;
             view.printMessage("Belt division set to Purple.");
         }
         else if (selection.equals(BROWN_BELT)) {
-            beltDivision = Belt.BROWN;
+            beltDivision = Belt.Brown;
             view.printMessage("Belt division set to Brown.");
         }
         else if (selection.equals(BLACK_BELT)) {
-            beltDivision = Belt.BLACK;
+            beltDivision = Belt.Black;
             view.printMessage("Belt division set to Black.");
         }
 

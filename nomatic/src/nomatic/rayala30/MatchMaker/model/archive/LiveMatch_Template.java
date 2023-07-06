@@ -1,4 +1,4 @@
-package nomatic.rayala30.MatchMaker;
+package nomatic.rayala30.MatchMaker.model.archive;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -27,7 +27,7 @@ public class LiveMatch_Template {
         // Implement try-catch blocks
 
         //        String beltDivision = "";
-        Belt beltDivision = Belt.WHITE; // default value
+        Belt beltDivision = Belt.White; // default value
         boolean missingBeltEntry = true;
 
         while (missingBeltEntry) {
@@ -38,19 +38,19 @@ public class LiveMatch_Template {
 
             try {
                 if (beltInput.equals("1")) {
-                    beltDivision = Belt.WHITE;
+                    beltDivision = Belt.White;
                     missingBeltEntry = false;
                 } else if (beltInput.equals("2")) {
-                    beltDivision = Belt.BLUE;
+                    beltDivision = Belt.Blue;
                     missingBeltEntry = false;
                 } else if (beltInput.equals("3")) {
-                    beltDivision = Belt.PURPLE;
+                    beltDivision = Belt.Purple;
                     missingBeltEntry = false;
                 } else if (beltInput.equals("4")) {
-                    beltDivision = Belt.BROWN;
+                    beltDivision = Belt.Brown;
                     missingBeltEntry = false;
                 } else if (beltInput.equals("5")) {
-                    beltDivision = Belt.BLACK;
+                    beltDivision = Belt.Black;
                     missingBeltEntry = false;
                 }
             } catch (IllegalArgumentException e) {
@@ -112,7 +112,7 @@ public class LiveMatch_Template {
         System.out.println();
 
 //        String weightDivision = "";
-        Weight weightDivision = Weight.ROOSTERWEIGHT;
+        Weight weightDivision = Weight.Roosterweight;
         boolean missingWeightEntry = true;
         while (missingWeightEntry) {
             // enter weight division
@@ -124,34 +124,34 @@ public class LiveMatch_Template {
 
             try {
                 if (weightInput.equals("1")) {
-                    weightDivision = Weight.ROOSTERWEIGHT;
+                    weightDivision = Weight.Roosterweight;
                     missingWeightEntry = false;
                 } else if (weightInput.equals("2")) {
-                    weightDivision = Weight.LIGHT_FEATHERWEIGHT;
+                    weightDivision = Weight.Light_Featherweight;
                     missingWeightEntry = false;
                 } else if (weightInput.equals("3")) {
-                    weightDivision = Weight.FEATHERWEIGHT;
+                    weightDivision = Weight.Featherweight;
                     missingWeightEntry = false;
                 } else if (weightInput.equals("4")) {
-                    weightDivision = Weight.LIGHTWEIGHT;
+                    weightDivision = Weight.Lightweight;
                     missingWeightEntry = false;
                 } else if (weightInput.equals("5")) {
-                    weightDivision = Weight.MIDDLEWEIGHT;
+                    weightDivision = Weight.Middleweight;
                     missingWeightEntry = false;
                 } else if (weightInput.equals("6")) {
-                    weightDivision = Weight.MEDIUM_HEAVYWEIGHT;
+                    weightDivision = Weight.Medium_Heavyweight;
                     missingWeightEntry = false;
                 } else if (weightInput.equals("7")) {
-                    weightDivision = Weight.HEAVYWEIGHT;
+                    weightDivision = Weight.Heavyweight;
                     missingWeightEntry = false;
                 } else if (weightInput.equals("8")) {
-                    weightDivision = Weight.SUPER_HEAVYWEIGHT;
+                    weightDivision = Weight.Super_Heavyweight;
                     missingWeightEntry = false;
                 } else if (weightInput.equals("9")) {
-                    weightDivision = Weight.ULTRA_HEAVYWEIGHT;
+                    weightDivision = Weight.Ultra_Heavyweight;
                     missingWeightEntry = false;
                 } else if (weightInput.equals("10")) {
-                    weightDivision = Weight.OPEN_WEIGHT;
+                    weightDivision = Weight.Open_Weight;
                     missingWeightEntry = false;
                 }
             } catch (IllegalArgumentException e) {
