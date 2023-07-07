@@ -56,7 +56,6 @@ public class MatchMakerController {
                 finished = true;
             }
         }
-
     }
 
     private void displayMatchSetupMenu() {
@@ -83,9 +82,6 @@ public class MatchMakerController {
         view.printMessage("MATCH SET FOR " + matchAge.toUpperCase() + " " + matchGender.toUpperCase() + " " + matchBelt.toString().toUpperCase() + " BELT DIVISION AT " + matchWeight.toString() + "." );
         view.printMessage(athleteOne.getName().toUpperCase() + " VS. " + athleteTwo.getName().toUpperCase());
         view.printMessage("");
-
-        // TODO
-        // Create prompt to ask if information needs editing
 
         // Start match
         runMatch(currentMatch, athleteOne, athleteTwo);
@@ -123,16 +119,16 @@ public class MatchMakerController {
         // TODO
         // PROBLEM: Countdown Timer inline with Match Action prompt line
 
-        Timer matchTimer = new Timer();
-        matchTimer.startTimer(60);
+
 
         final String[] MATCH_OPTIONS = {POINTS, ADVANTAGE, PENALTY, SUBMISSION, DISQUALIFICATION, REVIEW};
         boolean matchOngoing = true;
 
-        // Start timer
-
-
         while(matchOngoing) {
+            Timer matchTimer = new Timer();
+            int timer = currentMatch.getMatchLength();
+            matchTimer.startTimer(timer);
+
             // Display Score
             String athleteOneOverallScore = currentMatch.displayScore(athleteOne, athleteOnePoints, athleteOneAdv, athleteOnePenalty);
             String athleteTwoOverallScore = currentMatch.displayScore(athleteTwo, athleteTwoPoints, athleteTwoAdv, athleteTwoPenalty);
@@ -199,7 +195,7 @@ public class MatchMakerController {
                 // Athlete selection option
                 String athleteSelection = view.getMenuSelection("ATHLETE SELECTION", ATHLETE_OPTIONS);
 
-                view.printMessage("Submission win by: ");
+                view.printMessage("Submission win: ");
                 if (athleteSelection.equals(athleteOne.getName())) {
                     view.printMessage(athleteOne.getName().toUpperCase() + " WINS!");
                     view.printMessage("Match over.");
@@ -214,7 +210,7 @@ public class MatchMakerController {
                 // Athlete selection option
                 String athleteSelection = view.getMenuSelection("ATHLETE SELECTION", ATHLETE_OPTIONS);
 
-                view.printMessage("Disqualification for: ");
+                view.printMessage("Disqualification for: " + athleteOne.getName());
                 if (athleteSelection.equals(athleteOne.getName())) {
                     view.printMessage(athleteTwo.getName().toUpperCase() + " WINS!");
                     view.printMessage("Match over.");
@@ -226,9 +222,9 @@ public class MatchMakerController {
                 }
 
             } else if (action.equals(REVIEW)) {
-                // Use a pauseTimer() method
 
-                // Use a resumeTimer() method
+                // TODO
+                // Create a pause and resume timer method
 
                 // Athlete selection option
                 String athleteSelection = view.getMenuSelection("ATHLETE SELECTION", ATHLETE_OPTIONS);

@@ -43,6 +43,8 @@ public class Timer {
         return timer;
     }
 
+    // StartTimer method below can be used by other applications where manual input is not directly taken from Scanner class
+
     // Start the timer in a new thread
     public static Thread startTimer(int timer) {
         Thread thread = new Thread(() -> {
