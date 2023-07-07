@@ -79,7 +79,7 @@ public class MatchMakerController {
         view.printMessage("");
         view.printMessage("Setting up match.");
         view.printMessage("");
-        view.printMessage("MATCH SET FOR " + matchAge.toUpperCase() + " " + matchGender.toUpperCase() + " " + matchBelt.toString().toUpperCase() + " BELT DIVISION AT " + matchWeight.toString() + "." );
+        view.printMessage("MATCH SET FOR " + matchAge.toUpperCase() + " " + matchGender.toUpperCase() + " " + matchBelt.toString().toUpperCase() + " BELT DIVISION AT " + matchWeight.toString().toUpperCase() + "." );
         view.printMessage(athleteOne.getName().toUpperCase() + " VS. " + athleteTwo.getName().toUpperCase());
         view.printMessage("");
 
@@ -199,10 +199,12 @@ public class MatchMakerController {
                 if (athleteSelection.equals(athleteOne.getName())) {
                     view.printMessage(athleteOne.getName().toUpperCase() + " WINS!");
                     view.printMessage("Match over.");
+                    currentMatch.setMatchWinner(athleteOne.getName());
                     matchOngoing = false;
                 } else {
                     view.printMessage(athleteTwo.getName().toUpperCase() + " WINS!");
                     view.printMessage("Match over.");
+                    currentMatch.setMatchWinner(athleteTwo.getName());
                     matchOngoing = false;
                 }
 
@@ -214,10 +216,12 @@ public class MatchMakerController {
                 if (athleteSelection.equals(athleteOne.getName())) {
                     view.printMessage(athleteTwo.getName().toUpperCase() + " WINS!");
                     view.printMessage("Match over.");
+                    currentMatch.setMatchWinner(athleteTwo.getName());
                     matchOngoing = false;
                 } else {
                     view.printMessage(athleteOne.getName().toUpperCase() + " WINS!");
                     view.printMessage("Match over.");
+                    currentMatch.setMatchWinner(athleteOne.getName());
                     matchOngoing = false;
                 }
 
@@ -270,6 +274,10 @@ public class MatchMakerController {
 
             }
         }
+        // TODO
+        // Determine match winner if time runs out via points and advantages. Dependent on Timer class resolution
+
+
         // After match completes, run postMatchMenu
         postMatchMenu();
     }
@@ -443,7 +451,6 @@ public class MatchMakerController {
         }
 
         return ageDivision;
-
     }
 
     private String genderSetupMenu() {
@@ -466,7 +473,6 @@ public class MatchMakerController {
         }
 
         return genderDivision;
-
     }
 
     private int timeSetupMenu() {
@@ -501,7 +507,5 @@ public class MatchMakerController {
 
         return timerLength;
     }
-
-
 
 }
