@@ -1,4 +1,4 @@
-package nomatic.rayala30.MatchMaker.model;
+package nomatic.rayala30.MatchMaker.model.archive;
 
 public class CountDownTimer implements Runnable {
 

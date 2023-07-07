@@ -1,7 +1,7 @@
 package nomatic.rayala30.MatchMaker;
 
-import nomatic.rayala30.MatchMaker.model.CountDownTimer;
 import nomatic.rayala30.MatchMaker.model.Match;
+import nomatic.rayala30.MatchMaker.model.Timer;
 import nomatic.rayala30.MatchMaker.model.athlete.Athlete;
 import nomatic.rayala30.MatchMaker.model.athlete.Belt;
 import nomatic.rayala30.MatchMaker.model.athlete.Weight;
@@ -80,7 +80,7 @@ public class MatchMakerController {
         view.printMessage("");
         view.printMessage("Setting up match.");
         view.printMessage("");
-        view.printMessage("MATCH SET FOR " + matchAge.toUpperCase() + " " + matchGender.toUpperCase() + " " + matchBelt.toString() + " BELT DIVISION AT " + matchWeight.toString() + "." );
+        view.printMessage("MATCH SET FOR " + matchAge.toUpperCase() + " " + matchGender.toUpperCase() + " " + matchBelt.toString().toUpperCase() + " BELT DIVISION AT " + matchWeight.toString() + "." );
         view.printMessage(athleteOne.getName().toUpperCase() + " VS. " + athleteTwo.getName().toUpperCase());
         view.printMessage("");
 
@@ -120,16 +120,17 @@ public class MatchMakerController {
         final String DISQUALIFICATION = "Disqualification";
         final String REVIEW = "Review";
 
-        // Create timer
-        int timerLength = timeSetupMenu();
-        CountDownTimer timer = new CountDownTimer(timerLength);
-        Thread thread = new Thread(timer);
+        // TODO
+        // PROBLEM: Countdown Timer inline with Match Action prompt line
+
+        Timer matchTimer = new Timer();
+        matchTimer.startTimer(60);
 
         final String[] MATCH_OPTIONS = {POINTS, ADVANTAGE, PENALTY, SUBMISSION, DISQUALIFICATION, REVIEW};
         boolean matchOngoing = true;
 
         // Start timer
-        thread.start();
+
 
         while(matchOngoing) {
             // Display Score
