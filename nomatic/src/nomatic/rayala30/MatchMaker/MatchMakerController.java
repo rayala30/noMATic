@@ -1,5 +1,6 @@
 package nomatic.rayala30.MatchMaker;
 
+import nomatic.rayala30.MatchMaker.model.CountDownTimer;
 import nomatic.rayala30.MatchMaker.model.Match;
 import nomatic.rayala30.MatchMaker.model.athlete.Athlete;
 import nomatic.rayala30.MatchMaker.model.athlete.Belt;
@@ -14,6 +15,7 @@ public class MatchMakerController {
     private Match currentMatch; // Null Value until setup complete
 
     private final MatchMakerStorage storage;
+
 
 
     // Constructor
@@ -100,7 +102,6 @@ public class MatchMakerController {
         currentMatch.setAthleteOnePenalty(0);
         currentMatch.setAthleteTwoPenalty(0);
 
-
         // Get current points
         int athleteOnePoints = currentMatch.getAthleteOnePoints();
         int athleteTwoPoints = currentMatch.getAthleteTwoPoints();
@@ -111,8 +112,6 @@ public class MatchMakerController {
         int athleteOnePenalty = currentMatch.getAthleteOnePenalty();
         int athleteTwoPenalty = currentMatch.getAthleteTwoPenalty();
 
-
-
         // Point Options
         final String POINTS = "Points";
         final String ADVANTAGE = "Advantage";
@@ -121,8 +120,16 @@ public class MatchMakerController {
         final String DISQUALIFICATION = "Disqualification";
         final String REVIEW = "Review";
 
+        // Create timer
+        int timerLength = timeSetupMenu();
+        CountDownTimer timer = new CountDownTimer(timerLength);
+        Thread thread = new Thread(timer);
+
         final String[] MATCH_OPTIONS = {POINTS, ADVANTAGE, PENALTY, SUBMISSION, DISQUALIFICATION, REVIEW};
         boolean matchOngoing = true;
+
+        // Start timer
+        thread.start();
 
         while(matchOngoing) {
             // Display Score
@@ -218,6 +225,10 @@ public class MatchMakerController {
                 }
 
             } else if (action.equals(REVIEW)) {
+                // Use a pauseTimer() method
+
+                // Use a resumeTimer() method
+
                 // Athlete selection option
                 String athleteSelection = view.getMenuSelection("ATHLETE SELECTION", ATHLETE_OPTIONS);
                 final String EDIT_POINTS = "Edit points";
@@ -475,19 +486,19 @@ public class MatchMakerController {
         String selection = view.getMenuSelection("MATCH LENGTH", TIME_OPTIONS);
 
         if (selection.equals(FIVE)) {
-            timerLength = 300000;
+            timerLength = 300;
             view.printMessage("Match set for 5:00.");
         } else if (selection.equals(SIX)) {
-            timerLength = 360000;
+            timerLength = 360;
             view.printMessage("Match set for 6:00.");
         } else if (selection.equals(SEVEN)) {
-            timerLength = 420000;
+            timerLength = 420;
             view.printMessage("Match set for 7:00.");
         } else if (selection.equals(EIGHT)) {
-            timerLength = 480000;
+            timerLength = 480;
             view.printMessage("Match set for 8:00.");
         } else if (selection.equals(TEN)) {
-            timerLength = 600000;
+            timerLength = 600;
             view.printMessage("Match set for 10:00.");
         }
 
