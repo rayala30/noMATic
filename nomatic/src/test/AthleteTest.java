@@ -6,10 +6,24 @@ class AthleteTest {
 
     @org.junit.jupiter.api.Test
     void getBelt() {
+        // Arrange
+
+        // Act
+
+        // Assert
+
+
     }
 
     @org.junit.jupiter.api.Test
     void getWeight() {
+        // Arrange
+
+        // Act
+
+        // Assert
+
+
     }
 
     @org.junit.jupiter.api.Test
