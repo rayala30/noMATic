@@ -32,13 +32,17 @@ public class Athlete extends Biographic {
     }
 
     // method
-    @Override
-    public String toString() {
-        return "Athlete {" +
-                "belt=" + belt +
-                ", name='" + getName() + '\'' +
-                ", age=" + getAge() +
-                ", gender='" + getGender() + '\'' +
-                '}';
+
+    public String displayAthleteInformation() {
+        return "Athlete Information -  " + System.lineSeparator() +
+                "Name: " + getName() + System.lineSeparator() +
+                "Age: " + getAge() + System.lineSeparator() +
+                "Gender: " + getGender() + System.lineSeparator() +
+                "Belt: " + belt + System.lineSeparator();
+                }
+
     }
-}
+
+
+
+
